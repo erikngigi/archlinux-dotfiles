@@ -1,0 +1,7 @@
+reload "user.plugins"
+reload "user.options"
+reload "user.keybindings"
+reload "user.colorizer"
+reload "user.treesitter"
+reload "user.lsp"
+reload "user.switch-env"

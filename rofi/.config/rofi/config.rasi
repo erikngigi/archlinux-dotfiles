@@ -1,0 +1,9 @@
+configuration {
+  font: "JetBrainsMono NFM 10";
+  terminal: "alacritty";
+  hide-scrollbar: true;
+  transparency: false;
+  }
+//@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
+//@theme "/usr/share/rofi/themes/Monokai.rasi"
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
