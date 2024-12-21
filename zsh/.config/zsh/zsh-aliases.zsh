@@ -27,7 +27,6 @@ alias ls='exa -al --color=always --group-directories-first' # my preferred listi
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
-alias l.='exa -a | egrep "^\."'
 
 # pdf
 alias pdf='evince'
@@ -117,6 +116,7 @@ alias docker-start='docker start $(docker ps -a -q)'
 alias docker-stop='docker stop $(docker ps -a -q)'
 alias docker-prune='docker system prune --all'
 alias docker-volume-prune='docker volume rm $(docker volume ls)'
+alias docker-remove-dangling-images='docker rmi $(docker images -f "dangling=true" -q)'
 
 # python django
 alias python-makemigrations='python manage.py makemigrations'
@@ -174,12 +174,11 @@ alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
 alias colormysql=$(echo -e 'mysql --prompt="\x1B[31m\\u\x1B[34m@\x1B[32m\\h\x1B[0m:\x1B[36m\\d>\x1B[0m "')
 
 # Anime
-alias fumetsu="mpv $HOME/Tv-Shows/Fumetsu\ no\ Anata\ e/"
 alias one-piece="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/One\ Piece/"
-alias shingenki-no-kyojin="mpv $HOME/Tv-Shows/Shingeki\ no\ Kyojin/"
-
-# Tv-Shows
-alias batman-beyond="mpv $HOME/Tv-Shows/Batman\ Beyond"
+alias fma="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/Full\ Metal\ Alchemist\ Brotherhood/"
 
 # Python Django
 alias GET='http --follow --timeout 6'
+
+# Add SSH
+alias tsrv-ssh='ssh-add $HOME/.ssh/ericmosesngigi'
