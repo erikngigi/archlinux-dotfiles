@@ -14,5 +14,5 @@ transmission-daemon/.config/transmission-daemon/resume/
 transmission-daemon/.config/transmission-daemon/stats.json
 transmission-daemon/.config/transmission-daemon/torrents/
 zsh/.config/zsh/secrets.zsh
-zsh/.config/zsh/zsh_history
+zsh/.config/zsh/.zsh_history
 *.bak
