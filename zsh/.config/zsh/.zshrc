@@ -14,13 +14,12 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_SPACE
 
 # Sources
-plug "$HOME/.config/zsh/.zshenv"
-plug "$HOME/.config/zsh/secrets.zsh"
+# plug "$HOME/.config/zsh/.zshenv"
+# plug "$HOME/.config/zsh/secrets.zsh"
 plug "$HOME/.config/zsh/zsh-aliases.zsh"
 plug "$HOME/.config/zsh/zsh-prompt.zsh"
 plug "$HOME/.config/zsh/zsh-exports.zsh"
 plug "$HOME/.config/zsh/zsh-vim.zsh"
-plug "$HOME/.config/zsh/gh.zsh"
 
 # Plugins
 plug "zsh-users/zsh-autosuggestions"
@@ -34,11 +33,11 @@ plug "conda-incubator/conda-zsh-completion"
 
 # If tmux is executable, X is running, and not inside a tmux session, then try to attach. If attachment fails, start a new session
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
-  [ -z "${TMUX}" ] && { tmux || tmux; } >/dev/null 2>&1
+	[ -z "${TMUX}" ] && { tmux || tmux; } >/dev/null 2>&1
 fi
 
 # Load aws zsh complete
-complete -C "/usr/local/bin/aws_completer" aws
+# complete -C "/usr/local/bin/aws_completer" aws
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -64,3 +63,6 @@ zstyle ":conda_zsh_completion:*" show-global-envs-first true
 
 # Digital ocean completion
 source <(doctl completion zsh)
+
+# Add zoxide
+eval "$(zoxide init --cmd cd zsh)"

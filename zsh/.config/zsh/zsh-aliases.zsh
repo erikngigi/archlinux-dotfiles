@@ -79,7 +79,8 @@ alias getting-loose='mpv --vid=no "https://www.youtube.com/playlist?list=PLlhlrF
 alias anime-cli='anipy-cli -D -o -q 1080'
 
 #xrandr brightness
-alias br='xrandr --output DP1 --brightness '
+alias screen-1-br='xrandr --output DP1 --brightness '
+alias screen-2-br='xrandr --output DP2 --brightness '
 
 # nnn
 alias n='nnn -dr'
@@ -177,8 +178,5 @@ alias colormysql=$(echo -e 'mysql --prompt="\x1B[31m\\u\x1B[34m@\x1B[32m\\h\x1B[
 alias one-piece="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/One\ Piece/"
 alias fma="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/Full\ Metal\ Alchemist\ Brotherhood/"
 
-# Python Django
-alias GET='http --follow --timeout 6'
-
-# Add SSH
-alias tsrv-ssh='ssh-add $HOME/.ssh/ericmosesngigi'
+# Tv-Shows
+alias the-sopranos="mpv /storage/Tv\ Shows/The\ Sopranos"

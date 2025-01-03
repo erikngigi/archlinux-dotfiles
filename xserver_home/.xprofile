@@ -1,2 +1,21 @@
-"$HOME/.screenlayout/dual-display.sh"
+# Dual monitor displays
+"$HOME/.screenlayout/dell-duals-screens.sh"
+
+# Export session type
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+
+# Start network applet in the background
 nm-applet &
+
+# Start picom compositor in the background
+picom --config "$HOME/.config/picom/picom.conf" &
+
+# Restore wallpaper
+sh ~/.fehbg &
+
+# Set the default cursor to 'left_ptr'
+xsetroot -cursor_name left_ptr &
+
+# Launch BSPWM
+exec bspwm

@@ -37,13 +37,4 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # xprofile sourcing
-# [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f /home/eric/.xprofile ] && . /home/eric/.xprofile
-
-xsetroot -cursor_name left_ptr
-sh ~/.fehbg
-# picom --config $HOME/.config/picom/picom.conf &
-exec bspwm
-# export XDG_SESSION_TYPE=x11
-# export GDK_BACKEND=x11
-# exec gnome-session
