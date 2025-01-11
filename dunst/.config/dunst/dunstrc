@@ -275,17 +275,17 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#007fff"
+    background = "#00BFFF"
     foreground = "#ffffff"
-    frame_color = "#007fff"
+    frame_color = "#00BFFF"
     timeout = 05
     # Icon for notifications with low urgency, uncomment to enable
     icon = /home/eric/.config/dunst/normal.png
 
 [urgency_normal]
-    background = "#007fff"
+    background = "#00BFFF"
     foreground = "#ffffff"
-    frame_color = "#007fff"
+    frame_color = "#00BFFF"
     timeout = 05
     # Icon for notifications with normal urgency, uncomment to enable
     icon = /home/eric/.config/dunst/normal.png

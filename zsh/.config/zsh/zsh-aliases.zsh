@@ -29,7 +29,7 @@ alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
 # pdf
-alias pdf='evince'
+alias pdf='zathura'
 
 # wine
 alias metatrader-wine= "wine 'c:\program files\pepperstone metatrader 5/terminal64.exe'"

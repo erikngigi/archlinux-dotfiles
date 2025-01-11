@@ -49,19 +49,19 @@ TERM = "xterm-256color"
 size = 14.0
 
   [font.normal]
-  family = "JetBrainsMonoNL Nerd Font"
+  family = "JetBrainsMono Nerd Font"
   style = "Regular"
 
   [font.italic]
-  family = "JetBrainsMonoNL Nerd Font"
+  family = "JetBrainsMono Nerd Font"
   style = "Italic"
 
   [font.bold]
-  family = "JetBrainsMonoNL Nerd Font"
+  family = "JetBrainsMono Nerd Font"
   style = "SemiBold"
 
   [font.bold_italic]
-  family = "JetBrainsMonoNL Nerd Font"
+  family = "JetBrainsMono Nerd Font"
   style = "Bold Italic"
 
   [font.offset]

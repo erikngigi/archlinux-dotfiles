@@ -1,26 +1,27 @@
 #! /bin/sh
 
 # colors
-# black="#000000"
-# blue="#007FFF"
-cyan="#00FFFF"
+blue="#0066b2"
+# red="#E62020"
+# cyan="#00FFFF"
 # rust="#A73200"
 # electric_green="#32FF00"
-white="#FFFFFF"
+# white="#FFFFFF"
+black="#000000"
 
 pgrep -x sxhkd >/dev/null || sxhkd &
 "$HOME/.config/polybar/launch.sh"
 
-bspc monitor DP2 -d 1 2 3
-bspc monitor DP1 -d 4 5 6
+bspc monitor DP2 -d 1 2 3 4 5
+bspc monitor DP1 -d 6 7 8 9 10
 
 ##--Global Settings--##
-bspc config focused_border_color "$cyan"
-bspc config normal_border_color "$white"
-bspc config active_border_color "$white"
+bspc config focused_border_color "$blue"
+bspc config normal_border_color "$black"
+bspc config active_border_color "$black"
 
 ##--Monitor and Desktop Settings--##
-bspc config top_padding 44
+bspc config top_padding 38
 bspc config bottom_padding 4
 bspc config left_padding 4
 bspc config right_padding 4
@@ -33,9 +34,10 @@ bspc config focus_follows_pointer true
 bspc config single_monocle false
 
 bspc rule -a Brave-browser desktop=^1
-bspc rule -a TIPP10 desktop=^2
-bspc rule -a bottles desktop=^2
-bspc rule -a Upwork desktop=^2 state=floating
-bspc rule -a draw.io desktop=^3
-bspc rule -a Gimp desktop=^3
-bspc rule -a Thunar desktop=^3
+bspc rule -a Spotify desktop=^2
+bspc rule -a Upwork desktop=^3 state=floating
+bspc rule -a Gimp desktop=^4
+bspc rule -a Thunar desktop=^5
+bspc rule -a TIPP10 desktop=^6
+bspc rule -a bottles desktop=^6
+bscp rule -a uad_gui-linux desktop=^5
