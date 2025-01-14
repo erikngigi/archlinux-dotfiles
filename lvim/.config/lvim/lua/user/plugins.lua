@@ -1,5 +1,5 @@
 lvim.plugins = {
-	{ "HiPhish/rainbow-delimiters.nvim" },
+	-- { "HiPhish/rainbow-delimiters.nvim" },
 	{ "NvChad/nvim-colorizer.lua" },
 
 	-- colorschemes

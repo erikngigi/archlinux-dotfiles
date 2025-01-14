@@ -180,3 +180,4 @@ alias fma="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/Full\ Metal\ Alchemist\ Brot
 
 # Tv-Shows
 alias the-sopranos="mpv /storage/Tv\ Shows/The\ Sopranos"
+alias the-penguin="mpv /storage/Tv\ Shows/The\ Penguin"

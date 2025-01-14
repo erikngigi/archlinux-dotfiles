@@ -48,6 +48,12 @@ formatters.setup({
 			"yaml",
 		},
 	},
+	{
+		name = "goimports",
+		filetypes = {
+			"go",
+		},
+	},
 })
 
 local linters = require("lvim.lsp.null-ls.linters")
@@ -58,7 +64,7 @@ linters.setup({
 	},
 	-- { name = "flake8", args = { "--ignore=E203", "--line-length=120" }, filetypes = { "python" } },
 	{ name = "terraform_validate", filetypes = { "tf", "tfvars", "terraform" } },
-	-- { name = "ruff", filetypes = { "python" } },
+	{ name = "ruff", filetypes = { "python" } },
 	{ name = "eslint_d", filetypes = { "typescript", "typescriptreact" } },
 	{
 		name = "hadolint",
@@ -87,6 +93,12 @@ linters.setup({
 		filetypes = {
 			"yml",
 			"yaml",
+		},
+	},
+	{
+		name = "staticcheck",
+		filetypes = {
+			"go",
 		},
 	},
 })
