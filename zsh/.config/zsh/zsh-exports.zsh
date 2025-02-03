@@ -11,6 +11,7 @@ export PATH=~/.npm-global/bin:$PATH
 export PATH=/usr/bin/go:$PATH
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 export PATH=/usr/bin/python:$PATH
+export PATH=$HOME/.php:$PATH
 export PATH=$HOME/.scripts:$PATH
 export PATH=$HOME/.scripts/terraform:$PATH
 export PATH=$HOME/.miniconda/bin:$PATH

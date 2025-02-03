@@ -61,7 +61,7 @@ lvim.plugins = {
 	{ "AckslD/swenv.nvim" },
 	{ "stevearc/dressing.nvim" },
 
-	-- markdown preview
+	-- install with yarn or npm
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

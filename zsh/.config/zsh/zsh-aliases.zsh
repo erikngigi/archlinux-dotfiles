@@ -143,8 +143,11 @@ alias clear-yt='echo -n "" > /home/eric/.youtube.txt'
 alias clear-pl='echo -n "" > /home/eric/.youtube.m3u'
 alias youtube-download='yt -a /home/eric/.youtube.txt'
 
-#Aria
+# Aria
 alias clear-aria='echo -n "" > /home/eric/.aria2/input.conf'
+
+# Tremc
+alias tremc='tremc -X'
 
 # easier to read disk
 alias df='df -h'     # human-readable sizes
@@ -177,7 +180,8 @@ alias colormysql=$(echo -e 'mysql --prompt="\x1B[31m\\u\x1B[34m@\x1B[32m\\h\x1B[
 # Anime
 alias one-piece="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/One\ Piece/"
 alias fma="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/Full\ Metal\ Alchemist\ Brotherhood/"
+alias dragon-ball="mpv --aid=2 --sid=1 /storage/Tv\ Shows/Dragon\ Ball\ \(1986\)"
 
 # Tv-Shows
 alias the-sopranos="mpv /storage/Tv\ Shows/The\ Sopranos"
-alias the-penguin="mpv /storage/Tv\ Shows/The\ Penguin"
+alias mr-robot="mpv /storage/Tv\ Shows/Mr\ Robot"

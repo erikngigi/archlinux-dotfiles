@@ -2,12 +2,8 @@
 
 # colors
 blue="#0066b2"
-# red="#E62020"
-# cyan="#00FFFF"
-# rust="#A73200"
-# electric_green="#32FF00"
-# white="#FFFFFF"
-black="#000000"
+white="#FFFFFF"
+# black="#000000"
 
 pgrep -x sxhkd >/dev/null || sxhkd &
 "$HOME/.config/polybar/launch.sh"
@@ -17,16 +13,16 @@ bspc monitor DP1 -d 6 7 8 9 10
 
 ##--Global Settings--##
 bspc config focused_border_color "$blue"
-bspc config normal_border_color "$black"
-bspc config active_border_color "$black"
+bspc config normal_border_color "$white"
+bspc config active_border_color "$white"
 
 ##--Monitor and Desktop Settings--##
-bspc config top_padding 38
-bspc config bottom_padding 4
-bspc config left_padding 4
-bspc config right_padding 4
+bspc config top_padding 40
+bspc config bottom_padding 10
+bspc config left_padding 2
+bspc config right_padding 2
 bspc config border_width 2
-bspc config window_gap 4
+bspc config window_gap 2
 bspc config split_ratio 0.50
 bspc config borderless_monocle false
 bspc config gapless_monocle false
@@ -35,9 +31,9 @@ bspc config single_monocle false
 
 bspc rule -a Brave-browser desktop=^1
 bspc rule -a Spotify desktop=^2
-bspc rule -a Upwork desktop=^3 state=floating
+bspc rule -a Upwork desktop=^3
 bspc rule -a Gimp desktop=^4
 bspc rule -a Thunar desktop=^5
 bspc rule -a TIPP10 desktop=^6
 bspc rule -a bottles desktop=^6
-bscp rule -a uad_gui-linux desktop=^5
+bspc rule -a uad_gui-linux desktop=^7

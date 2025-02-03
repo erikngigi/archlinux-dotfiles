@@ -9,7 +9,7 @@ export GDK_BACKEND=x11
 nm-applet &
 
 # Start picom compositor in the background
-picom --config "$HOME/.config/picom/picom.conf" &
+# picom --config "$HOME/.config/picom/picom.conf" &
 
 # Restore wallpaper
 sh ~/.fehbg &
