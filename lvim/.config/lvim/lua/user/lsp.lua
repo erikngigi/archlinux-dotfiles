@@ -1,3 +1,69 @@
+-- Intelephense LSP settings
+local lspconfig = require("lspconfig")
+lspconfig.intelephense.setup({
+	settings = {
+		intelephense = {
+			environment = {
+				includePaths = { "/usr/include/php" }, -- Adjust if needed
+			},
+			files = {
+				maxSize = 5000000, -- Increase max file size (in bytes) if needed
+				associations = { "*.php", "*.phtml" },
+			},
+			stubs = {
+				"apache",
+				"bcmath",
+				"bz2",
+				"calendar",
+				"Core",
+				"curl",
+				"date",
+				"dom",
+				"fileinfo",
+				"filter",
+				"gd",
+				"gettext",
+				"hash",
+				"iconv",
+				"intl",
+				"json",
+				"libxml",
+				"mbstring",
+				"mcrypt",
+				"mysql",
+				"mysqli",
+				"openssl",
+				"pdo",
+				"pdo_mysql",
+				"pdo_sqlite",
+				"Phar",
+				"readline",
+				"Reflection",
+				"session",
+				"SimpleXML",
+				"soap",
+				"sockets",
+				"SPL",
+				"sqlite3",
+				"standard",
+				"tokenizer",
+				"xml",
+				"xmlreader",
+				"xmlwriter",
+				"zip",
+				"zlib",
+			},
+			diagnostics = {
+				enable = true,
+				undefinedTypes = false,
+				undefinedFunctions = false,
+				undefinedConstants = false,
+				undefinedVariables = false,
+			},
+		},
+	},
+})
+
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
 	{ name = "ruff" },

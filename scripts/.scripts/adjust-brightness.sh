@@ -20,10 +20,23 @@ get_brightness() {
 	local screen=$1
 	ddcutil getvcp 10 --display "$screen" | grep -Po 'current value\s*=\s*\K\d+'
 }
+
+# Function to get screen model using ddcutil
+get_screen_models() {
+	ddcutil detect | awk -F': ' '/Model:/ {gsub(/^ +| +$/, "", $2); print $2}'
+}
+
+# Read screen models into an array
+mapfile -t screen_models < <(get_screen_models)
+
+# Default to "Unknown Model" if no model is found
+model1="${screen_models[0]:-Unknown Model}"
+model2="${screen_models[1]:-Unknown Model}"
+
 # Prompt user for screen selection
 echo "Which screen would you like to adjust?"
-echo "1. Screen 1"
-echo "2. Screen 2"
+echo "1. Screen 1 ($model1) Current Brightness:$(get_brightness 1)"
+echo "2. Screen 2 ($model2) Current Brightness:$(get_brightness 2)"
 echo "3. Both Screens"
 echo "0. Exit"
 read -p "Enter your choice (0, 1, 2, or 3): " screen_choice

@@ -37,3 +37,6 @@ bspc rule -a Thunar desktop=^5
 bspc rule -a TIPP10 desktop=^6
 bspc rule -a bottles desktop=^6
 bspc rule -a uad_gui-linux desktop=^7
+bspc rule -a thunderbird desktop=^8
+bspc rule -a thunderbird desktop=^8
+bspc rule -a obsidian desktop=^8

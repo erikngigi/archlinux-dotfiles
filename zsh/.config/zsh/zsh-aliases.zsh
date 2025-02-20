@@ -185,3 +185,4 @@ alias dragon-ball="mpv --aid=2 --sid=1 /storage/Tv\ Shows/Dragon\ Ball\ \(1986\)
 # Tv-Shows
 alias the-sopranos="mpv /storage/Tv\ Shows/The\ Sopranos"
 alias mr-robot="mpv /storage/Tv\ Shows/Mr\ Robot"
+alias hannibal="mpv /storage/Tv\ Shows/Hannibal"
