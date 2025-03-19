@@ -1,6 +1,9 @@
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
+fpath+=(~/.config/hcloud/completion/zsh)
+# fpath=( /home/eric/.miniconda/lib/python3.12/site-packages/argcomplete/bash_completion.d "${fpath[@]}" )
+
 # Load and initialise completion system
 autoload -Uz compinit; compinit
 autoload bashcompinit; bashcompinit
@@ -14,8 +17,7 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_SPACE
 
 # Sources
-# plug "$HOME/.config/zsh/.zshenv"
-# plug "$HOME/.config/zsh/secrets.zsh"
+plug "$HOME/.config/zsh/secrets.zsh"
 plug "$HOME/.config/zsh/zsh-aliases.zsh"
 plug "$HOME/.config/zsh/zsh-prompt.zsh"
 plug "$HOME/.config/zsh/zsh-exports.zsh"
@@ -52,7 +54,7 @@ fi
 #     fi
 # fi
 # unset __conda_setup
-eval "$(/home/eric/.miniconda3/bin/conda shell.zsh hook)"
+# eval "$(/home/eric/.miniconda3/bin/conda shell.zsh hook)"
 # <<< conda initialize <<<
 
 zstyle ':completion:*' special-dirs false
@@ -61,6 +63,11 @@ zstyle ":conda_zsh_completion:*" use-groups true
 zstyle ":conda_zsh_completion:*" show-unnamed true
 zstyle ":conda_zsh_completion:*" sort-envs-by-time true
 zstyle ":conda_zsh_completion:*" show-global-envs-first true
+
+# Better SSH/Rsync/SCP Autocomplete
+zstyle ':completion:*:(scp|rsync):*' tag-order ' hosts:-ipaddr:ip\ address hosts:-host:host files'
+zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
+zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
 
 # Digital ocean completion
 source <(doctl completion zsh)

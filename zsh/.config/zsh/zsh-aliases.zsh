@@ -5,9 +5,6 @@ alias zshrc='lvim ~/.config/zsh/'
 alias clear-zsh='echo -n "" > /home/eric/.zsh_history'
 alias zsh-colors='for i in {1..256}; do print -P "%F{$i}Color : $i"; done;'
 
-# clear mozilla cache
-alias clear-firefox="rm -rf ~/.cache/mozilla/firefox/*"
-
 # terraform
 alias tf='terraform'
 
@@ -31,18 +28,15 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 # pdf
 alias pdf='zathura'
 
-# wine
-alias metatrader-wine= "wine 'c:\program files\pepperstone metatrader 5/terminal64.exe'"
-
 # pacman and yay
 alias Pacman='doas pacman'
 alias refresh='doas pacman -Syyy'
 alias pacsyu='doas pacman -Syu'                  # update only standard pkgs
 alias pacsyyu='doas pacman -Syyu'                # Refresh pkglist & update standard pkgs
 alias yaysua='yay -Sua --noconfirm'              # update only AUR pkgs (yay)
-alias update-packages='yay -Syu --noconfirm'     # update standard pkgs and AUR pkgs (yay)
 alias unlock='doas rm /var/lib/pacman/db.lck'    # remove pacman lock
 alias cleanup='yay -Rns $(yay -Qtdq)'            # remove orphaned packages
+alias checkupdates='checkupdates && yay -Qua'
 
 # Infracost
 alias infracost-breakdown='infracost breakdown --path . --show-skipped'
@@ -74,13 +68,6 @@ alias cat='bat'
 alias mpv-nv="mpv --vid=no"
 alias k-pop='mpv --vid=no "https://www.youtube.com/playlist?list=PLlhlrF6zpj01PV6qkBItGubiz-Z0Eefci"'
 alias getting-loose='mpv --vid=no "https://www.youtube.com/playlist?list=PLlhlrF6zpj02QWTFPIQ_aMs7I3hACMzqr"'
-
-#anime-cli
-alias anime-cli='anipy-cli -D -o -q 1080'
-
-#xrandr brightness
-alias screen-1-br='xrandr --output DP1 --brightness '
-alias screen-2-br='xrandr --output DP2 --brightness '
 
 # nnn
 alias n='nnn -dr'
@@ -174,8 +161,6 @@ alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate ar
 
 # systemd
 alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
-
-alias colormysql=$(echo -e 'mysql --prompt="\x1B[31m\\u\x1B[34m@\x1B[32m\\h\x1B[0m:\x1B[36m\\d>\x1B[0m "')
 
 # Anime
 alias one-piece="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/One\ Piece/"

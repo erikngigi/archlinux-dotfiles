@@ -10,6 +10,7 @@ export MANWIDTH=999
 export PATH=~/.npm-global/bin:$PATH
 export PATH=/usr/bin/go:$PATH
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=/usr/bin/python:$PATH
 export PATH=$HOME/.php:$PATH
 export PATH=$HOME/.scripts:$PATH
@@ -22,10 +23,11 @@ export NNN_TRASH=1
 export NNN_COLORS='#27272727'
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_BMS="d:/storage/Downloads;e:$HOME/Yggdrasil;t:/storage/Torrents;s:/storage/"
-export EDITOR="lvim"
-export BROWSER="Brave-browser"
+export EDITOR="/home/eric/.local/bin/lvim"
+export BROWSER="/usr/bin/brave"
 export TERM="xterm-256color"
 export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:/usr/share"
+export PASSWORD_STORE_CLIP_TIME="120"
 
 # infracost environmental variables
 export INFRACOST_CURRENCY="USD"

@@ -89,10 +89,13 @@ formatters.setup({
 			"scss",
 		},
 	},
-	{ name = "djlint", filetypes = {
-		"html",
-		"htmldjango",
-	} },
+	{
+		name = "djlint",
+		filetypes = {
+			"html",
+			"htmldjango",
+		},
+	},
 	{
 		name = "terraform_fmt",
 		filetypes = {
@@ -134,13 +137,17 @@ linters.setup({
 	{ name = "eslint_d", filetypes = { "typescript", "typescriptreact" } },
 	{
 		name = "hadolint",
-		filetypes = { "yml" },
-		root_pattern = { "docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml" },
+		filetypes = {
+			"docker-compose.yml",
+		},
 	},
-	{ name = "djlint", filetypes = {
-		"html",
-		"htmldjango",
-	} },
+	{
+		name = "djlint",
+		filetypes = {
+			"html",
+			"htmldjango",
+		},
+	},
 	{
 		name = "phpcs",
 		args = {
@@ -150,17 +157,17 @@ linters.setup({
 			"php",
 		},
 	},
-	{
-		name = "yamllint",
-		args = {
-			"-c",
-			"/home/eric/.config/lvim/lua/user/lspsettings/yaml-config",
-		},
-		filetypes = {
-			"yml",
-			"yaml",
-		},
-	},
+	-- {
+	--   name = "yamllint",
+	--   args = {
+	--     "-c",
+	--     "/home/eric/.config/lvim/lua/user/lspsettings/yaml-config",
+	--   },
+	--   filetypes = {
+	--     "yml",
+	--     "yaml",
+	--   },
+	-- },
 	{
 		name = "staticcheck",
 		filetypes = {

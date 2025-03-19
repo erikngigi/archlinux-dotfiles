@@ -133,11 +133,10 @@ super + {Left,Down,Up,Right}
 
 #Volume Control
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
-	/usr/bin/pactl set-sink-volume 0 {+5%,-5%}
+	/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
 
-{XF86AudioMute}
-/usr/bin/pactl set-sink-mute 0 toggle
+XF86AudioMute
+  /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-# Disable middle mouse button paste
-~button2
-    ;echo -n | xclip -in
+XF86AudioPlay
+    playerctl play-pause || mpv --player-operation-mode=pseudo-gui --pause
