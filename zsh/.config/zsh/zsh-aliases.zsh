@@ -25,9 +25,6 @@ alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
-# pdf
-alias pdf='zathura'
-
 # pacman and yay
 alias Pacman='doas pacman'
 alias refresh='doas pacman -Syyy'
@@ -37,6 +34,8 @@ alias yaysua='yay -Sua --noconfirm'              # update only AUR pkgs (yay)
 alias unlock='doas rm /var/lib/pacman/db.lck'    # remove pacman lock
 alias cleanup='yay -Rns $(yay -Qtdq)'            # remove orphaned packages
 alias checkupdates='checkupdates && yay -Qua'
+alias update-arch='yay -Syu --noconfirm'
+alias clear-cache='yay -Scc --noconfirm'
 
 # Infracost
 alias infracost-breakdown='infracost breakdown --path . --show-skipped'
@@ -84,12 +83,16 @@ alias checkout='git checkout'
 alias clone='git clone'
 alias commit='git commit'
 alias fetch='git fetch'
-alias pull='git pull origin'
-alias push='git push origin'
 alias stat='git status'  # 'status' is protected name so using 'stat' instead
 alias tag='git tag'
 alias newtag='git tag -a'
 alias merge='git merge'
+
+# systemctl
+alias sysstart='sudo systemctl start'
+alias sysrestart='sudo systemctl restart'
+alias sysstop='sudo systemctl stop'
+alias sysstatus='sudo systemctl status'
 
 # docker
 alias docker-containers-all='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"'
@@ -113,6 +116,9 @@ alias python-collectstatic='python manage.py collectstatic'
 alias python-createsuperuser='python manage.py createsuperuser'
 alias python-runserver='python manage.py runserver'
 
+# Add SSH keys
+alias ssh-add-hetzner='ssh-add /home/eric/.ssh/hetzner'
+
 # Vanaheim HDD
 alias vanaheim-btrfs='doas mount -t btrfs /dev/sdb1 /home/eric/Yggdrasil'
 alias vanaheim-ntfs='doas mount -t ntfs /dev/sdb1 /home/eric/Yggdrasil'
@@ -125,6 +131,7 @@ alias ufdmount='doas umount /dev/sdb1 /home/eric/Yggdrasil'
 # Youtube
 alias yt='yt-dlp --config-location /home/eric/.config/yt-dlp/normal-config'
 alias ytp='yt-dlp --config-location /home/eric/.config/yt-dlp/playlist-config'
+alias ytpv='yt-dlp --config-location /home/eric/.config/yt-dlp/private-config'
 alias yta='yt-dlp --config-location /home/eric/.config/yt-dlp/audio-config'
 alias clear-yt='echo -n "" > /home/eric/.youtube.txt'
 alias clear-pl='echo -n "" > /home/eric/.youtube.m3u'
@@ -162,12 +169,14 @@ alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate ar
 # systemd
 alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
 
-# Anime
-alias one-piece="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/One\ Piece/"
-alias fma="mpv --aid=1 --sid=1 $HOME/Tv-Shows/Anime/Full\ Metal\ Alchemist\ Brotherhood/"
-alias dragon-ball="mpv --aid=2 --sid=1 /storage/Tv\ Shows/Dragon\ Ball\ \(1986\)"
+# Game mode
+alias game-mode-on="xrandr --output DP2 --off"
+alias game-mode-off="xrandr --output DP2 --mode 1920x1080 --left-of DP1"
 
-# Tv-Shows
-alias the-sopranos="mpv /storage/Tv\ Shows/The\ Sopranos"
-alias mr-robot="mpv /storage/Tv\ Shows/Mr\ Robot"
-alias hannibal="mpv /storage/Tv\ Shows/Hannibal"
+# Anime
+alias one-piece="mpv --aid=1 --sid=1 /storage/Tv-Shows/One\ Piece/"
+
+# Western Tv-Shows
+alias andor="mpv /storage/Tv-Shows/Andor"
+alias justice-league="mpv /storage/Tv-Shows/Justice\ League"
+alias person-of-interest="mpv /storage/Tv-Shows/Person\ of\ Interest"

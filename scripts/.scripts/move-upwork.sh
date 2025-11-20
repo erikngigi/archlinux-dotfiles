@@ -5,6 +5,7 @@ TIME_TRACKER_POSITION="80 100"
 CONTROL_PANEL_POSITION="440 100"
 MESSAGE_PANEL="560 100"
 SETTINGS_PANEL="560 100"
+ABOUT_PANEL="600 100"
 
 # Function to move a window by name
 move_window() {
@@ -30,3 +31,5 @@ move_window "Time Tracker" "$TIME_TRACKER_POSITION"
 move_window "Control Panel" "$CONTROL_PANEL_POSITION"
 move_window "Messages" "$MESSAGE_PANEL"
 move_window "Settings" "$SETTINGS_PANEL"
+move_window "About" "$ABOUT_PANEL"
+move_window "Upwork" "$ABOUT_PANEL"

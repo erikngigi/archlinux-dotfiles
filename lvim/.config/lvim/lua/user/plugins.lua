@@ -46,32 +46,20 @@ lvim.plugins = {
 	-- PHPDocs
 	{ "mralejandro/vim-phpdoc" },
 
-	-- -- neotree
-	-- {
-	-- "nvim-neo-tree/neo-tree.nvim",
-	-- branch = "v3.x",
-	-- dependencies = {
-	--   "nvim-lua/plenary.nvim",
-	--   "nvim-tree/nvim-web-devicons",
-	--   "MunifTanjim/nui.nvim",
-	--   },
-	-- },
-
-	-- python environments
-	{ "AckslD/swenv.nvim" },
-	{ "stevearc/dressing.nvim" },
-
 	-- install with yarn or npm
 	{
 		"iamcco/markdown-preview.nvim",
-    config = function()
-      vim.fn["mkdp#util#install"]()
-    end,
+		config = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 }
 
-require("swenv").setup({
-	post_set_venv = function()
-		vim.cmd("LspRestart")
-	end,
+require("catppuccin").setup({
+	color_overrides = {
+		macchiato = {
+			-- overlay2 = "#AF87D7",
+			overlay2 = "#878787",
+		},
+	},
 })

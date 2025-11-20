@@ -1,5 +1,6 @@
 -- custom keybindings
-lvim.keys.normal_mode["<TAB>"] = "<cmd>BufferLineCycleNext<cr>"
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.builtin.which_key.mappings["w"] = {
 	name = "File Options",
 	w = { "<cmd>w<cr>", "save" },
@@ -19,7 +20,7 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
 }
 
 -- switch python environment
-lvim.keys.normal_mode["ce"] = "<cmd>lua require('swenv.api').pick_venv()<cr>"
+-- lvim.keys.normal_mode["ce"] = "<cmd>lua require('swenv.api').pick_venv()<cr>"
 
 -- Neotree --
 -- lvim.builtin.which_key.mappings["e"] = {}

@@ -1,5 +1,6 @@
--- Intelephense LSP settings
 local lspconfig = require("lspconfig")
+
+-- Intelephense LSP settings
 lspconfig.intelephense.setup({
 	settings = {
 		intelephense = {
@@ -64,6 +65,64 @@ lspconfig.intelephense.setup({
 	},
 })
 
+-- YAML LSP with Hugo schema
+lspconfig.yamlls.setup({
+	settings = {
+		redhat = {
+			telemetry = { enabled = false }, -- disable telemetry
+		},
+		yaml = {
+			completion = true, -- enable completion
+			hover = true, -- enable hover info
+			validate = true, -- enable validation
+			format = {
+				enable = true, -- allow formatting
+				singleQuote = true, -- prefer single quotes
+				printWidth = 100, -- wrap lines at 100 chars
+			},
+			schemaStore = {
+				enable = true,
+				url = "https://www.schemastore.org/api/json/catalog.json",
+			},
+			schemas = {
+				-- Map schema URLs to file patterns
+				["https://schemastore.org/hugo.json"] = "hugo.yaml",
+				["https://schemastore.org/hugo-theme.json"] = "theme.yaml",
+			},
+			customTags = {
+				"!Ref scalar",
+				"!Sub scalar",
+				"!GetAtt scalar", -- useful for AWS CloudFormation/SAM
+			},
+		},
+	},
+})
+
+-- lspconfig.terraformls.setup({
+-- settings = {
+--     terraform = {
+--         languageServer = {
+--             enable = true,
+--             ignoreSingleFileWarning = true, -- suppress warnings for child modules
+--             args = { "serve" },
+--         },
+--         validation = {
+--             enableEnhancedValidation = true,
+--         },
+--         experimentalFeatures = {
+--             prefillRequiredFields = true,
+--             validateOnSave = true,
+--         },
+--         codelens = {
+--             referenceCount = true, -- inline references for resources/variables
+--         },
+--     },
+-- },
+-- Root detection: prefer .terraform, fallback to main.tf or provider.tf
+--     root_dir = lspconfig.util.root_pattern(".terraform", "main.tf", "provider.tf")
+-- })
+
+-- Lunarvim formatters
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
 	{ name = "ruff" },
@@ -72,28 +131,29 @@ formatters.setup({
 	{ name = "stylelint" },
 	{
 		name = "prettierd",
-		---@usage arguments to pass to the formatter
-		-- these cannot contain whitespace
-		-- options such as `--line-width 80` become either `{"--line-width", "80"}` or `{"--line-width=80"}`
-		---@usage only start in these filetypes, by default it will attach to all filetypes it supports
 		filetypes = {
-			"markdown",
-			"sql",
-			"lua",
-			"typescript",
+			-- Web / App languages
 			"javascript",
-			"javascriptreact",
-			"typescriptreact",
-			"html",
+			"typescript",
+
+			-- Styling
 			"css",
 			"scss",
-		},
-	},
-	{
-		name = "djlint",
-		filetypes = {
+
+			-- Markup
 			"html",
-			"htmldjango",
+			"markdown",
+
+			-- Config / scripting
+			"lua",
+		},
+		args = {
+			"--print-width",
+			"150",
+			"--tab-width",
+			"4",
+			"--trailing-comma",
+			"es5",
 		},
 	},
 	{
@@ -118,9 +178,10 @@ formatters.setup({
 		},
 	},
 	{
-		name = "goimports",
+		name = "latexindent",
 		filetypes = {
-			"go",
+			"tex",
+			"latex",
 		},
 	},
 })
@@ -131,7 +192,6 @@ linters.setup({
 		name = "shellcheck",
 		args = { "--severity", "warning" },
 	},
-	-- { name = "flake8", args = { "--ignore=E203", "--line-length=120" }, filetypes = { "python" } },
 	{ name = "terraform_validate", filetypes = { "tf", "tfvars", "terraform" } },
 	{ name = "ruff", filetypes = { "python" } },
 	{ name = "eslint_d", filetypes = { "typescript", "typescriptreact" } },
@@ -141,13 +201,7 @@ linters.setup({
 			"docker-compose.yml",
 		},
 	},
-	{
-		name = "djlint",
-		filetypes = {
-			"html",
-			"htmldjango",
-		},
-	},
+	{ name = "trivy", filetypes = { "dockerfile" } },
 	{
 		name = "phpcs",
 		args = {
@@ -157,28 +211,22 @@ linters.setup({
 			"php",
 		},
 	},
-	-- {
-	--   name = "yamllint",
-	--   args = {
-	--     "-c",
-	--     "/home/eric/.config/lvim/lua/user/lspsettings/yaml-config",
-	--   },
-	--   filetypes = {
-	--     "yml",
-	--     "yaml",
-	--   },
-	-- },
 	{
-		name = "staticcheck",
+		name = "yamllint",
+		args = {
+			"-c",
+			"/home/eric/.config/lvim/lua/user/lspsettings/yaml-config",
+		},
 		filetypes = {
-			"go",
+			"yml",
+			"yaml",
 		},
 	},
-})
-
-local code_actions = require("lvim.lsp.null-ls.code_actions")
-code_actions.setup({
 	{
-		name = "ltrs",
+		name = "vale",
+		filetypes = {
+			"tex",
+			"latex",
+		},
 	},
 })

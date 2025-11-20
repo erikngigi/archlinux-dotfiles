@@ -2,4 +2,4 @@
 
 #author : Eric Ngigi
 
-curl wttr.in/Rongai
+curl wttr.in/Nyeri

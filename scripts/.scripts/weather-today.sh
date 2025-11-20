@@ -1,3 +1,3 @@
 #!/bin/bash
 
-curl 'en.wttr.in/Rongai?1pq'
+curl 'en.wttr.in/Nyeri?1pq'
