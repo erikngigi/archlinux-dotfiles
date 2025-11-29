@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-alias lvimrc='lvim ~/.config/lvim/'
-alias zshrc='lvim ~/.config/zsh/'
 alias clear-zsh='echo -n "" > /home/eric/.zsh_history'
 alias zsh-colors='for i in {1..256}; do print -P "%F{$i}Color : $i"; done;'
 
@@ -44,8 +42,21 @@ alias infracost-breakdown='infracost breakdown --path . --show-skipped'
 alias sudo='doas'
 
 # NvChad
-alias lv='lvim'
-alias Lv='doas lvim'
+nvim_cd() {
+    local target_dir="${1:-.}"  # Default to current directory
+    
+    if [ ! -d "$target_dir" ]; then
+        echo "Error: Directory '$target_dir' not found"
+        return 1
+    fi
+    
+    local current_dir="$(pwd)"
+    cd "$target_dir" || return 1
+    nvim "$@"
+    cd "$current_dir"
+}
+alias nvimrc='nvim_cd ~/.config/nvim'
+alias zshrc='nvim_cd ~/.config/zsh'
 alias nv='nvim'
 alias Nv='doas nvim'
 
@@ -180,3 +191,4 @@ alias one-piece="mpv --aid=1 --sid=1 /storage/Tv-Shows/One\ Piece/"
 alias andor="mpv /storage/Tv-Shows/Andor"
 alias justice-league="mpv /storage/Tv-Shows/Justice\ League"
 alias person-of-interest="mpv /storage/Tv-Shows/Person\ of\ Interest"
+alias the-mentalist="mpv /storage/Tv-Shows/The\ Mentalist"

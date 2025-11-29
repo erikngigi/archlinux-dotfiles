@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------
 # Flags
 #-----------------------------------------------------------------------------------
---limit-rate 2048K
+--limit-rate 512K
 --no-playlist
 # --write-auto-sub
 # --embed-subs
@@ -15,7 +15,4 @@
 #-----------------------------------------------------------------------------------
 # Download preferences
 #-----------------------------------------------------------------------------------
-# -f 137+140/137+140-8/22+140/136+140/135+140/133+140/160+140/240p
 -f "137+bestaudio[ext=m4a][language=en-US]/137+bestaudio[ext=m4a][language=en]/137+bestaudio[ext=m4a]/136+bestaudio[ext=m4a][language=en-US]/136+bestaudio[ext=m4a][language=en]/136+bestaudio[ext=m4a]"
-# -f "bestvideo[ext=mp4][height<=1080][height>=720]+bestaudio[ext=m4a][language=en-US]/bestvideo[ext=mp4][height<=1080][height>=720]+bestaudio[ext=m4a][language=en]/bestvideo[ext=mp4][height<=1080][height>=720]+bestaudio[ext=m4a]"
-# -f "(137/136/135/133/160)+(bestaudio[language=en-US]/bestaudio[language=en]/140)/(137/136/135/133/160)+140/22+140/240p"
