@@ -32,10 +32,8 @@ lint.linters.flake8.args = {
 
 lint.linters.shellcheck.args = {
     unpack(lint.linters.shellcheck.args),
-    "--severity=warning",
-    "--format=gcc",
-    "--shell=bash",
-    "--disable=SC2086,SC2181",
+    "--severity=style",
+    "--enable=all",
 }
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
