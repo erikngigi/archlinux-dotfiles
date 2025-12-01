@@ -17,7 +17,8 @@ precmd_functions+=(fix_cursor)
 precmd() {
     vcs_info
     prompt_git
-    prompt_conda
+    # prompt_conda
+    prompt_python_venv
 }
 
 setopt PROMPT_SUBST
@@ -36,13 +37,22 @@ prompt_git() {
     fi
 }
 
-prompt_conda() {
-    if [[ -n $CONDA_DEFAULT_ENV ]]; then
-        PROMPT_CONDA_ENV="%F{2} %f:%F{2}$CONDA_DEFAULT_ENV%f "
+# prompt_conda() {
+#     if [[ -n $CONDA_DEFAULT_ENV ]]; then
+#         PROMPT_CONDA_ENV="%F{2} %f:%F{2}$CONDA_DEFAULT_ENV%f "
+#     else
+#         PROMPT_CONDA_ENV=""
+#     fi
+# }
+
+prompt_python_venv() {
+    if [[ -n $VIRTUAL_ENV ]]; then
+        PROMPT_VENV_ENV="%F{2} %f:%F{2}$(basename $VIRTUAL_ENV)%f "
     else
-        PROMPT_CONDA_ENV=""
+        PROMPT_VENV_ENV=""
     fi
 }
 
 NEWLINE=$'\n'
-PROMPT='%F{202}[%F{214}%n%F{190}@%F{45}%m%F{202}]%f %F{256}at %F{214}%T %F{256}in %F{6}%~%f ${PROMPT_GIT_INFO}${PROMPT_CONDA_ENV}${NEWLINE}%F{45}%f '
+# PROMPT='%F{202}[%F{214}%n%F{190}@%F{45}%m%F{202}]%f %F{256}at %F{214}%T %F{256}in %F{6}%~%f ${PROMPT_GIT_INFO}${PROMPT_CONDA_ENV}${NEWLINE}%F{45}%f '
+PROMPT='%F{202}[%F{214}%n%F{190}@%F{45}%m%F{202}]%f %F{256}at %F{214}%T %F{256}in %F{6}%~%f ${PROMPT_GIT_INFO}${PROMPT_VENV_ENV}${NEWLINE}%F{45}%f '

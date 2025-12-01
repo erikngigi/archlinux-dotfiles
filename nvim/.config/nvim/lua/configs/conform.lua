@@ -1,20 +1,28 @@
 local options = {
     formatters_by_ft = {
-        bash = { "shfmt" },
-        gitcommit = { "trim_whitespace" },
+        css = { "prettierd" },
+        dockerfile = { "dockerfmt" },
+        html = { "prettierd" },
         lua = { "stylua" },
-        python = { "ruff" },
+        python = {
+            "ruff_fix",
+            "ruff_format",
+        },
+        scss = { "prettierd" },
+        sh = { "shfmt" },
         terraform = { "terraform_fmt" },
         tf = { "terraform_fmt" },
+        yaml = { "yamlfmt" },
     },
     formatters = {
-        -- Python
-        -- ruff = {
-        --     prepend_args = {
-        --         "--line-length",
-        --         "120",
-        --     },
-        -- },
+        dockerfmt = {
+            command = "dockerfmt",
+            prepend_args = {
+                "-i",
+                "4",
+            },
+            stdin = true,
+        },
         shfmt = {
             prepend_args = {
                 "-i",
@@ -26,7 +34,7 @@ local options = {
     },
     format_on_save = {
         -- These options will be passed to conform.format()
-        timeout_ms = 500,
+        timeout_ms = 5000,
         lsp_fallback = true,
     },
 }

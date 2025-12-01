@@ -15,6 +15,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 # Go
 export PATH="/usr/local/go:$PATH"
+export GOPATH="$HOME/.go"
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -82,3 +83,8 @@ export INFRACOST_LOG_LEVEL="info"
 # ------------------------
 # export TF_CLI_CONFIG_FILE="$HOME/.terraformrc"
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
+# ------------------------
+# Disable Python Prompt
+# ------------------------
+export VIRTUAL_ENV_DISABLE_PROMPT=1
