@@ -8,13 +8,17 @@ lspconfig.servers = {
     "cssls",
     "docker_compose_language_service",
     "dockerls",
+    "denols",
     "html",
     "lua_ls",
+    "marksman",
+    "ruff",
     "yamlls",
 }
 
 -- List of servers configured with default config
 local default_servers = {
+    "marksman",
     "ruff",
 }
 
@@ -26,6 +30,42 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     })
 end
+
+vim.lsp.config("denols", {
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+
+    root_markers = { "deno.json", "deno.jsonc" },
+
+    settings = {
+        deno = {
+            enable = true,
+            lint = true,
+            unstable = false, -- Set true if you use unstable APIs
+            suggest = {
+                completeFunctionCalls = true,
+                imports = {
+                    autoDiscover = true,
+                },
+            },
+            codeLens = {
+                implementations = true,
+                references = true,
+                referencesAllFunctions = true,
+                test = true,
+            },
+            inlayHints = {
+                enumMemberValues = true,
+                functionLikeReturnTypes = true,
+                parameterNames = true,
+                parameterTypes = true,
+                propertyDeclarationTypes = true,
+                variableTypes = true,
+            },
+        },
+    },
+})
 
 vim.lsp.config("docker_compose_language_service", {
     on_attach = on_attach,

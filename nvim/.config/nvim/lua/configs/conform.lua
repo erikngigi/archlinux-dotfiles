@@ -3,7 +3,9 @@ local options = {
         css = { "prettierd" },
         dockerfile = { "dockerfmt" },
         html = { "prettierd" },
+        javascript = { "prettierd" },
         lua = { "stylua" },
+        markdown = { "prettierd" },
         python = {
             "ruff_fix",
             "ruff_format",

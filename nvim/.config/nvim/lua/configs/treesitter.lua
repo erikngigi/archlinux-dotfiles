@@ -11,6 +11,7 @@ local options = {
         "gitattributes",
         "gitcommit",
         "html",
+        "javascript",
         "json",
         "latex",
         "lua",
