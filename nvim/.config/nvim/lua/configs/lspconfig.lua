@@ -5,6 +5,7 @@ local lspconfig = require("nvchad.configs.lspconfig") -- nvim 0.11
 
 -- List of all servers configured
 lspconfig.servers = {
+    "bashls",
     "cssls",
     "docker_compose_language_service",
     "dockerls",
@@ -12,14 +13,19 @@ lspconfig.servers = {
     "html",
     "lua_ls",
     "marksman",
-    "ruff",
+    "nginx_language_server",
+    "pylsp",
+    "texlab",
     "yamlls",
 }
 
 -- List of servers configured with default config
 local default_servers = {
+    "cssls",
     "marksman",
-    "ruff",
+    "nginx_language_server",
+    "pylsp",
+    "texlab",
 }
 
 -- LSPs with default config
@@ -30,6 +36,36 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     })
 end
+
+vim.lsp.config("bashls", {
+    on_attach = on_attach, -- your on_attach function
+    on_init = on_init, -- your on_init function
+    capabilities = capabilities, -- your capabilities
+    filetypes = { "sh", "bash", "make" },
+    settings = {
+        bashIde = {
+            backgroundAnalysisMaxFiles = 500,
+            enableSourceErrorDiagnostics = false,
+            explainshellEndpoint = "",
+            globPattern = "**/*@(.sh|.inc|.bash|.command)",
+            includeAllWorkspaceSymbols = false,
+            logLevel = "info",
+            shellcheckArguments = "",
+            shellcheckPath = "",
+            shfmt = {
+                binaryNextLine = false,
+                caseIndent = false,
+                funcNextLine = false,
+                ignoreEditorconfig = false,
+                keepPadding = false,
+                languageDialect = "auto",
+                path = "shfmt",
+                simplifyCode = false,
+                spaceRedirects = false,
+            },
+        },
+    },
+})
 
 vim.lsp.config("denols", {
     on_attach = on_attach,
@@ -71,7 +107,7 @@ vim.lsp.config("docker_compose_language_service", {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
-    filetypes = { "yaml.docker-compose", "yaml" },
+    filetypes = { "yaml.docker-compose" },
     root_markers = { "docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml" },
 })
 
@@ -179,6 +215,28 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+-- Python LSP (Pylsp) custom setup
+-- vim.lsp.config("pylsp", {
+--     on_attach = on_attach,
+--     on_init = on_init,
+--     capabilities = capabilities,
+--     settings = {
+--         pylsp = {
+--             plugins = {
+--                 jedi_completion = {
+--                     enabled = true,
+--                     fuzzy = true,
+--                     eager = true,
+--                 },
+--                 pylsp_docs = {
+--                     enabled = true,
+--                     eager = true,
+--                 },
+--             },
+--         },
+--     },
+-- })
+
 -- Python LSP (Pyright) custom setup
 -- vim.lsp.config("pyright", {
 --     on_attach = on_attach,
@@ -189,9 +247,8 @@ vim.lsp.config("lua_ls", {
 --             analysis = {
 --                 autoImportCompletions = true,
 --                 autoSearchPaths = true,
---                 diagnosticMode = "workspace",
+--                 typeCheckingMode = "strict",
 --                 useLibraryCodeForTypes = true,
---                 typeCheckingMode = "basic",
 --             },
 --         },
 --     },
@@ -220,6 +277,8 @@ vim.lsp.config("yamlls", {
             },
             schemas = {
                 "https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json",
+                "https://www.schemastore.org/hugo.json",
+                "https://www.schemastore.org/hugo-theme.json",
             },
         },
     },

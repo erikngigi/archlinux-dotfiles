@@ -14,15 +14,10 @@ export PATH="$HOME/.local/bin:$PATH"
 # NodeJS global packages
 export PATH="$HOME/.npm-global/bin:$PATH"
 # Go
-export PATH="/usr/local/go:$PATH"
 export GOPATH="$HOME/.go"
-export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+export PATH="$PATH:$(go env GOPATH)/bin"
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
-# Python
-export PATH="/usr/bin/python:$PATH"
-# PHP
-export PATH="$HOME/.php:$PATH"
 # Custom scripts
 export PATH="$HOME/.scripts:$HOME/.scripts/terraform:$PATH"
 

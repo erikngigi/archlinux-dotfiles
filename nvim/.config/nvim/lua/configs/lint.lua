@@ -5,10 +5,14 @@ lint.linters_by_ft = {
     html = { "htmlhint" },
     javascript = { "eslint_d" },
     lua = { "luacheck" },
+    make = { "checkmake" },
     markdown = { "proselint" },
-    python = { "ruff" },
+    -- python = { "ruff" },
+    python = { "flake8" },
     sh = { "shellcheck" },
+    scss = { "stylelint" },
     terraform = { "tflint" },
+    tex = { "vale" },
 }
 
 lint.linters.luacheck.args = {
