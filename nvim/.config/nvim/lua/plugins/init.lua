@@ -1,5 +1,12 @@
 return {
     {
+        "nvimtools/none-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("configs.none-ls")
+        end,
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         event = { "BufReadPre", "BufNewFile" },
         config = function()

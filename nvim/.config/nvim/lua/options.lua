@@ -32,3 +32,10 @@ vim.diagnostic.config({
     update_in_insert = false, -- Don't update diagnostics while typing
     severity_sort = true, -- Sort by severity (errors first)
 })
+
+vim.filetype.add({
+    extension = {
+        tf = "terraform",
+        tfvars = "terraform-vars",
+    },
+})

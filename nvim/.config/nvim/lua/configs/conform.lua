@@ -7,16 +7,11 @@ local options = {
         lua = { "stylua" },
         make = { "mbake" },
         markdown = { "prettierd" },
-        -- python = {
-        --     "ruff_fix",
-        --     "ruff_format",
-        -- },
         python = { "black" },
         scss = { "prettierd" },
         sh = { "shfmt" },
         terraform = { "terraform_fmt" },
         tex = { "tex-fmt" },
-        tf = { "terraform_fmt" },
         yaml = { "yamlfmt" },
     },
     formatters = {

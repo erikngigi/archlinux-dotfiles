@@ -15,6 +15,7 @@ lspconfig.servers = {
     "marksman",
     "nginx_language_server",
     "pylsp",
+    "terraformls",
     "texlab",
     "yamlls",
 }
@@ -25,6 +26,8 @@ local default_servers = {
     "marksman",
     "nginx_language_server",
     "pylsp",
+    "terraformls",
+    "tflint",
     "texlab",
 }
 
@@ -253,6 +256,18 @@ vim.lsp.config("lua_ls", {
 --         },
 --     },
 -- })
+
+-- Terraform LSP (terraformls) custom setup
+vim.lsp.config("terraformls", {
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    cmd = { "terraform-ls", "serve" },
+    filetypes = { "terraform", "terraform-vars", "tf", "tfvars" },
+    root_markers = { ".terraform", ".git" },
+})
+
+vim.lsp.enable("terraformls")
 
 -- Yaml LSP (Yamlls) custom setup
 vim.lsp.config("yamlls", {

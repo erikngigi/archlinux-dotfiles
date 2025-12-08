@@ -7,12 +7,12 @@ lint.linters_by_ft = {
     lua = { "luacheck" },
     make = { "checkmake" },
     markdown = { "proselint" },
-    -- python = { "ruff" },
     python = { "flake8" },
     sh = { "shellcheck" },
     scss = { "stylelint" },
-    terraform = { "tflint" },
+    -- terraform = { "terraform_validate" },
     tex = { "vale" },
+    -- tf = { "terraform_validate" },
 }
 
 lint.linters.luacheck.args = {
@@ -42,8 +42,16 @@ lint.linters.shellcheck.args = {
     "--enable=all",
 }
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-    callback = function()
-        lint.try_lint()
-    end,
-})
+-- Wrap terraform_validate to use terraform command
+-- local original_tf_validate = lint.linters.terraform_validate
+-- lint.linters.terraform_validate = function()
+--     local linter_config = original_tf_validate()
+--     linter_config.cmd = "terraform"
+--     return linter_config
+-- end
+
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+--     callback = function()
+--         lint.try_lint()
+--     end,
+-- })

@@ -36,19 +36,52 @@ local function conform_formatters()
 end
 
 -- Linters from nvim-lint
-local function lint_linters()
-    local ok, lint = pcall(require, "lint")
-    if not ok then
-        return " : none"
+-- local function lint_linters()
+--     local ok, lint = pcall(require, "lint")
+--     if not ok then
+--         return " : none"
+--     end
+--
+--     local ft = vim.bo.filetype
+--     local linters = lint.linters_by_ft[ft] or {}
+--
+--     if #linters == 0 then
+--         return " : none"
+--     end
+--
+--     return " : " .. table.concat(linters, ",")
+-- end
+
+-- Linters from nvim-lint and diagnostics from None-LS combined
+local function all_linters()
+    local ft = vim.bo.filetype
+    local linters = {}
+
+    -- Get linters from nvim-lint
+    local ok_lint, lint = pcall(require, "lint")
+    if ok_lint then
+        local lint_list = lint.linters_by_ft[ft] or {}
+        for _, linter in ipairs(lint_list) do
+            table.insert(linters, linter)
+        end
     end
 
-    local ft = vim.bo.filetype
-    local linters = lint.linters_by_ft[ft] or {}
+    -- Get diagnostics from None-LS
+    local ok_null_ls, null_ls = pcall(require, "null-ls")
+    if ok_null_ls then
+        -- Get available diagnostics for current filetype
+        local diagnostics = null_ls.builtins.diagnostics
+        for name, diagnostic in pairs(diagnostics) do
+            -- Check if this diagnostic supports current filetype
+            if diagnostic.filetypes and vim.tbl_contains(diagnostic.filetypes, ft) then
+                table.insert(linters, name)
+            end
+        end
+    end
 
     if #linters == 0 then
         return " : none"
     end
-
     return " : " .. table.concat(linters, ",")
 end
 
@@ -120,7 +153,8 @@ function M.setup()
                     color = { fg = "#63f2f1", bg = "#011627" }, -- Cyan Formatter
                 },
                 {
-                    lint_linters,
+                    -- lint_linters,
+                    all_linters,
                     color = { fg = "#ffd900", bg = "#011627" }, -- Yellow Linter
                 },
                 {

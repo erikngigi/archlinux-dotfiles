@@ -64,7 +64,7 @@ export PASSWORD_STORE_CLIP_TIME="120"
 # ------------------------
 # AWS
 # ------------------------
-export AWS_PROFILE=ericngigi
+# export AWS_PROFILE=ericngigi
 
 # ------------------------
 # Infracost
