@@ -33,6 +33,19 @@ vim.diagnostic.config({
     severity_sort = true, -- Sort by severity (errors first)
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "gitcommit",
+    callback = function()
+        vim.opt_local.textwidth = 72
+
+        -- Create a custom highlight group
+        vim.api.nvim_set_hl(0, "CommitOverflow", { fg = "#FF6B6B", bg = "NONE" })
+
+        -- Highlight characters beyond column 72
+        vim.cmd("match CommitOverflow /\\%>72v.\\+/")
+    end,
+})
+
 vim.filetype.add({
     extension = {
         tf = "terraform",

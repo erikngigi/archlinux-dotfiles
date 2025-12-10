@@ -55,6 +55,7 @@ nvim_cd() {
     nvim "$@"
     cd "$current_dir"
 }
+alias configrc='nvim_cd ~/.config/'
 alias nvimrc='nvim_cd ~/.config/nvim'
 alias zshrc='nvim_cd ~/.config/zsh'
 alias nv='nvim'

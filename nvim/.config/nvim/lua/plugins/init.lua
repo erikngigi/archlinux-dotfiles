@@ -132,9 +132,18 @@ return {
                 },
                 filters = {
                     dotfiles = false,
+                    custom = { "^.git$" }, -- Optional: still hide .git folder
+                },
+                view = {
+                    width = 30,
+                },
+                filesystem_watchers = {
+                    enable = true,
+                    debounce_delay = 50,
                 },
                 git = {
                     enable = true,
+                    ignore = false,
                 },
             })
         end,
