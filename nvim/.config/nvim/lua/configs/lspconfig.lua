@@ -9,7 +9,7 @@ lspconfig.servers = {
     "cssls",
     "docker_compose_language_service",
     "dockerls",
-    "denols",
+    "gopls",
     "html",
     "lua_ls",
     "marksman",
@@ -17,6 +17,7 @@ lspconfig.servers = {
     "pylsp",
     "terraformls",
     "texlab",
+    "ts_ls",
     "yamlls",
 }
 
@@ -29,6 +30,7 @@ local default_servers = {
     "terraformls",
     "tflint",
     "texlab",
+    "ts_ls",
 }
 
 -- LSPs with default config
@@ -50,7 +52,7 @@ vim.lsp.config("bashls", {
             backgroundAnalysisMaxFiles = 500,
             enableSourceErrorDiagnostics = false,
             explainshellEndpoint = "",
-            globPattern = "**/*@(.sh|.inc|.bash|.command)",
+            globPattern = "**/*@(.sh|.inc|.bash|.command|.zsh)",
             includeAllWorkspaceSymbols = false,
             logLevel = "info",
             shellcheckArguments = "",
@@ -140,6 +142,25 @@ vim.lsp.config("dockerls", {
     filetypes = { "dockerfile" },
     root_markers = { "Dockerfile" },
 })
+
+vim.lsp.config("gopls", {
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_markers = { "go.work", "go.mod", ".git" },
+    settings = {
+        gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+                unusedparams = true,
+            },
+        },
+    },
+})
+
+vim.lsp.enable("gopls")
 
 vim.lsp.config("html", {
     on_attach = on_attach,
@@ -317,3 +338,25 @@ vim.lsp.config("yamlls", {
 -- })
 --
 -- vim.lsp.enable("ruff")
+
+-- Config LSP setup
+local util = require("lspconfig.util")
+local configs = require("lspconfig.configs")
+
+-- Register config_lsp if it doesn't exist
+if not configs.config_lsp then
+    configs.config_lsp = {
+        default_config = {
+            cmd = { "config-lsp", "--stdio", "--no-undetectable-errors" },
+            filetypes = { "sshconfig", "sshdconfig", "fstab", "aliases", "conf", "gitconfig", "hosts", "wireguard" },
+            root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+            single_file_support = true,
+        },
+    }
+end
+
+require("lspconfig").config_lsp.setup({
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+})

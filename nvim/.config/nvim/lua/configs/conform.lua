@@ -1,15 +1,15 @@
 local options = {
     formatters_by_ft = {
-        css = { "prettier" },
+        css = { "prettierd" },
         dockerfile = { "dockerfmt" },
         hcl = { "terraform_fmt" },
-        html = { "prettier" },
-        javascript = { "prettier" },
+        html = { "prettierd" },
+        javascript = { "prettierd" },
         lua = { "stylua" },
         make = { "mbake" },
-        markdown = { "prettier" },
+        markdown = { "prettierd" },
         python = { "black" },
-        scss = { "prettier" },
+        scss = { "prettierd" },
         sh = { "shfmt" },
         terraform = { "terraform_fmt" },
         ["terraform-vars"] = { "terraform_fmt" },
@@ -46,13 +46,14 @@ local options = {
                 "-ci",
             },
         },
-        prettier = {
+        ["tex-fmt"] = {
             prepend_args = {
-                "--printWidth=150",
-                "--tabWidth=2",
-                "--singleQuote=true",
-                "--trailingComma=all",
+                "--wraplen",
+                "150",
+                "--tabsize",
+                "4",
             },
+            stdin = true,
         },
     },
     format_on_save = {

@@ -15,7 +15,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 # Go
 export GOPATH="$HOME/.go"
-export PATH="$PATH:$(go env GOPATH)/bin"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOBIN:$PATH"
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 # Custom scripts

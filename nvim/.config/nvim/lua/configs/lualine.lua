@@ -16,23 +16,69 @@ local function lsp_clients()
 end
 
 -- Formatters from Conform.nvim
-local function conform_formatters()
-    local ok, conform = pcall(require, "conform")
-    if not ok then
+-- local function conform_formatters()
+--     local ok, conform = pcall(require, "conform")
+--     if not ok then
+--         return " : none"
+--     end
+--
+--     local available = conform.list_formatters()
+--     if not available or #available == 0 then
+--         return " : none"
+--     end
+--
+--     local names = {}
+--     for _, f in ipairs(available) do
+--         table.insert(names, f.name)
+--     end
+--
+--     return " : " .. table.concat(names, ",")
+-- end
+
+-- Formatters from Conform.nvim + null-ls
+local function all_formatters()
+    local ft = vim.bo.filetype
+    local formatters = {}
+
+    -- -------------------------
+    -- Conform formatters
+    -- -------------------------
+    local ok_conform, conform = pcall(require, "conform")
+    if ok_conform then
+        local available = conform.list_formatters()
+        for _, f in ipairs(available or {}) do
+            table.insert(formatters, f.name)
+        end
+    end
+
+    -- -------------------------
+    -- null-ls formatters
+    -- -------------------------
+    local ok_null_ls, null_ls = pcall(require, "null-ls")
+    if ok_null_ls then
+        local builtins = null_ls.builtins.formatting
+        for name, formatter in pairs(builtins) do
+            if formatter.filetypes and vim.tbl_contains(formatter.filetypes, ft) then
+                table.insert(formatters, name)
+            end
+        end
+    end
+
+    -- Deduplicate
+    local unique = {}
+    local seen = {}
+    for _, name in ipairs(formatters) do
+        if not seen[name] then
+            seen[name] = true
+            table.insert(unique, name)
+        end
+    end
+
+    if #unique == 0 then
         return " : none"
     end
 
-    local available = conform.list_formatters()
-    if not available or #available == 0 then
-        return " : none"
-    end
-
-    local names = {}
-    for _, f in ipairs(available) do
-        table.insert(names, f.name)
-    end
-
-    return " : " .. table.concat(names, ",")
+    return " : " .. table.concat(unique, ", ")
 end
 
 -- Linters from nvim-lint
@@ -149,7 +195,7 @@ function M.setup()
                     color = { fg = "#82aaff", bg = "#011627" }, -- Blue LSP
                 },
                 {
-                    conform_formatters,
+                    all_formatters,
                     color = { fg = "#63f2f1", bg = "#011627" }, -- Cyan Formatter
                 },
                 {

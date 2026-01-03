@@ -10,6 +10,8 @@ local options = {
         "git_rebase",
         "gitattributes",
         "gitcommit",
+        "go",
+        "goctl",
         "html",
         "ini",
         "javascript",

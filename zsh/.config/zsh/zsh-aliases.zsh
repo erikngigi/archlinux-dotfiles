@@ -181,15 +181,21 @@ alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate ar
 # systemd
 alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
 
+# Roadsmart Windows RDP
+alias rdpadmin="xfreerdp /v:18.198.114.201 /u:EC2AMAZ-4M1P3P5\\rdpadmin /p:'WZ8qO9y6LJwXAq2qGPPov7aHG' /size:1920x1080 /cert:ignore /sec:nla"
+
 # Game mode
 alias game-mode-on="xrandr --output DP2 --off"
 alias game-mode-off="xrandr --output DP2 --mode 1920x1080 --left-of DP1"
 
 # Anime
 alias one-piece="mpv --aid=1 --sid=1 /storage/Tv-Shows/One\ Piece/"
+alias solo-leveling="mpv --aid=1 --sid=1 /storage/Tv-Shows/Solo\ Leveling"
 
 # Western Tv-Shows
 alias andor="mpv /storage/Tv-Shows/Andor"
 alias justice-league="mpv /storage/Tv-Shows/Justice\ League"
 alias person-of-interest="mpv /storage/Tv-Shows/Person\ of\ Interest"
 alias the-mentalist="mpv /storage/Tv-Shows/The\ Mentalist"
+alias manhunt-unabomber="mpv /storage/Tv-Shows/Manhunt\ Unabomber"
+alias fallout="mpv /storage/Tv-Shows/Fallout"

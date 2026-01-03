@@ -176,4 +176,18 @@ return {
             },
         },
     },
+    {
+        "https://git.myzel394.app/Myzel394/config-lsp.nvim",
+        opts = {
+            executable = {
+                path = nil, -- Change "nill" to "nil"
+                args = {
+                    "--no-undetectable-errors",
+                },
+                download_folder = vim.fn.stdpath("data") .. "/config-lsp/bin",
+            },
+            inject_lsp = false, -- Set to false since we're doing manual setup
+            add_filetypes = true,
+        },
+    },
 }
