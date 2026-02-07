@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alias clear-zsh='echo -n "" > /home/eric/.zsh_history'
+alias clear-zsh='echo -n "" > /home/lenny/.zsh_history'
 alias zsh-colors='for i in {1..256}; do print -P "%F{$i}Color : $i"; done;'
 
 # terraform
@@ -26,11 +26,11 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 # pacman and yay
 alias Pacman='doas pacman'
 alias refresh='doas pacman -Syyy'
-alias pacsyu='doas pacman -Syu'                  # update only standard pkgs
-alias pacsyyu='doas pacman -Syyu'                # Refresh pkglist & update standard pkgs
-alias yaysua='yay -Sua --noconfirm'              # update only AUR pkgs (yay)
-alias unlock='doas rm /var/lib/pacman/db.lck'    # remove pacman lock
-alias cleanup='yay -Rns $(yay -Qtdq)'            # remove orphaned packages
+alias pacsyu='doas pacman -Syu'               # update only standard pkgs
+alias pacsyyu='doas pacman -Syyu'             # Refresh pkglist & update standard pkgs
+alias yaysua='yay -Sua --noconfirm'           # update only AUR pkgs (yay)
+alias unlock='doas rm /var/lib/pacman/db.lck' # remove pacman lock
+alias cleanup='yay -Rns $(yay -Qtdq)'         # remove orphaned packages
 alias checkupdates='checkupdates && yay -Qua'
 alias update-arch='yay -Syu --noconfirm'
 alias clear-cache='yay -Scc --noconfirm'
@@ -43,17 +43,17 @@ alias sudo='doas'
 
 # NvChad
 nvim_cd() {
-    local target_dir="${1:-.}"  # Default to current directory
-    
-    if [ ! -d "$target_dir" ]; then
-        echo "Error: Directory '$target_dir' not found"
-        return 1
-    fi
-    
-    local current_dir="$(pwd)"
-    cd "$target_dir" || return 1
-    nvim "$@"
-    cd "$current_dir"
+  local target_dir="${1:-.}" # Default to current directory
+
+  if [ ! -d "$target_dir" ]; then
+    echo "Error: Directory '$target_dir' not found"
+    return 1
+  fi
+
+  local current_dir="$(pwd)"
+  cd "$target_dir" || return 1
+  nvim "$@"
+  cd "$current_dir"
 }
 alias configrc='nvim_cd ~/.config/'
 alias nvimrc='nvim_cd ~/.config/nvim'
@@ -95,7 +95,7 @@ alias checkout='git checkout'
 alias clone='git clone'
 alias commit='git commit'
 alias fetch='git fetch'
-alias stat='git status'  # 'status' is protected name so using 'stat' instead
+alias stat='git status' # 'status' is protected name so using 'stat' instead
 alias tag='git tag'
 alias newtag='git tag -a'
 alias merge='git merge'
@@ -129,28 +129,28 @@ alias python-createsuperuser='python manage.py createsuperuser'
 alias python-runserver='python manage.py runserver'
 
 # Add SSH keys
-alias ssh-add-hetzner='ssh-add /home/eric/.ssh/hetzner'
+alias ssh-add-hetzner='ssh-add /home/lenny/.ssh/hetzner'
 
 # Vanaheim HDD
-alias vanaheim-btrfs='doas mount -t btrfs /dev/sdb1 /home/eric/Yggdrasil'
-alias vanaheim-ntfs='doas mount -t ntfs /dev/sdb1 /home/eric/Yggdrasil'
-alias uvanaheim='doas umount /dev/sdb1 /home/eric/Yggdrasil'
+alias vanaheim-btrfs='doas mount -t btrfs /dev/sdb1 /home/lenny/Yggdrasil'
+alias vanaheim-ntfs='doas mount -t ntfs /dev/sdb1 /home/lenny/Yggdrasil'
+alias uvanaheim='doas umount /dev/sdb1 /home/lenny/Yggdrasil'
 
 # Flash Drive Mount
-alias fdmount='doas mount /dev/sdb1 /home/eric/Yggdrasil'
-alias ufdmount='doas umount /dev/sdb1 /home/eric/Yggdrasil'
+alias fdmount='doas mount /dev/sdb1 /home/lenny/Yggdrasil'
+alias ufdmount='doas umount /dev/sdb1 /home/lenny/Yggdrasil'
 
 # Youtube
-alias yt='yt-dlp --config-location /home/eric/.config/yt-dlp/normal-config'
-alias ytp='yt-dlp --config-location /home/eric/.config/yt-dlp/playlist-config'
-alias ytpv='yt-dlp --config-location /home/eric/.config/yt-dlp/private-config'
-alias yta='yt-dlp --config-location /home/eric/.config/yt-dlp/audio-config'
-alias clear-yt='echo -n "" > /home/eric/.youtube.txt'
-alias clear-pl='echo -n "" > /home/eric/.youtube.m3u'
-alias youtube-download='yt -a /home/eric/.youtube.txt'
+alias yt='yt-dlp --config-location /home/lenny/.config/yt-dlp/normal-config'
+alias ytp='yt-dlp --config-location /home/lenny/.config/yt-dlp/playlist-config'
+alias ytpv='yt-dlp --config-location /home/lenny/.config/yt-dlp/private-config'
+alias yta='yt-dlp --config-location /home/lenny/.config/yt-dlp/audio-config'
+alias clear-yt='echo -n "" > /home/lenny/.youtube.txt'
+alias clear-pl='echo -n "" > /home/lenny/.youtube.m3u'
+alias youtube-download='yt -a /home/lenny/.youtube.txt'
 
 # Aria
-alias clear-aria='echo -n "" > /home/eric/.aria2/input.conf'
+alias clear-aria='echo -n "" > /home/lenny/.aria2/input.conf'
 
 # Tremc
 alias tremc='tremc -X'
