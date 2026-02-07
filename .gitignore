@@ -15,5 +15,6 @@ transmission-daemon/.config/transmission-daemon/stats.json
 transmission-daemon/.config/transmission-daemon/torrents/
 zsh/.config/zsh/secrets.zsh
 zsh/.config/zsh/.zsh_history
+zsh/.zsh_history
 zsh/.config/zsh/.zcompdump
 zsh/.config/zsh/.zcompcache/
