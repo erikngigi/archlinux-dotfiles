@@ -25,14 +25,14 @@ setopt PROMPT_SUBST
 
 prompt_git() {
     if [[ -n ${vcs_info_msg_0_} ]]; then
-        GIT_STATUS=$(command git status --porcelain 2> /dev/null | tail -n1)
+        GIT_STATUS=$(command git status --porcelain 2>/dev/null | tail -n1)
         GIT_BRANCH=$(git symbolic-ref HEAD | sed 's!refs\/heads\/!!')
         if [[ -n $GIT_STATUS ]]; then
             PROMPT_GIT_INFO="%F{1} %f:%F{1}$GIT_BRANCH%f "
         else
             PROMPT_GIT_INFO="%F{2} %f:%F{2}$GIT_BRANCH%f "
         fi
-    else 
+    else
         PROMPT_GIT_INFO=""
     fi
 }

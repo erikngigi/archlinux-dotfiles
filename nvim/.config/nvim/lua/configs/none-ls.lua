@@ -2,10 +2,11 @@ local null_ls = require("null-ls")
 
 -- Formatters
 local formatters = {
-    -- Formatters
+    -- Go Formatters
     null_ls.builtins.formatting.gofumpt,
     null_ls.builtins.formatting.goimports_reviser,
     null_ls.builtins.formatting.golines,
+    null_ls.builtins.formatting.sqruff,
 }
 
 -- Diagnostics
@@ -13,8 +14,12 @@ local diagnostics = {
     -- Terraform
     null_ls.builtins.diagnostics.terraform_validate.with({
         filetypes = { "hcl", "terraform", "terraform-vars", "tf" },
+        cwd = function(params)
+            return vim.fn.fnamemodify(vim.fn.finddir("provider.tf", vim.fn.expand("%:p:h") .. ";"), ":h")
+        end,
     }),
     null_ls.builtins.diagnostics.golangci_lint,
+    null_ls.builtins.diagnostics.sqruff,
 }
 
 local sources = {}

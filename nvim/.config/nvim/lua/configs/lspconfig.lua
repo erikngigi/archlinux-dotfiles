@@ -13,8 +13,8 @@ lspconfig.servers = {
     "html",
     "lua_ls",
     "marksman",
-    "nginx_language_server",
     "pylsp",
+    "sqlls",
     "terraformls",
     "texlab",
     "ts_ls",
@@ -25,7 +25,6 @@ lspconfig.servers = {
 local default_servers = {
     "cssls",
     "marksman",
-    "nginx_language_server",
     "pylsp",
     "terraformls",
     "tflint",
@@ -42,11 +41,13 @@ for _, lsp in ipairs(default_servers) do
     })
 end
 
+vim.lsp.enable(default_servers)
+
 vim.lsp.config("bashls", {
     on_attach = on_attach, -- your on_attach function
     on_init = on_init, -- your on_init function
     capabilities = capabilities, -- your capabilities
-    filetypes = { "sh", "bash", "make" },
+    filetypes = { "sh", "bash", "make", "zsh" },
     settings = {
         bashIde = {
             backgroundAnalysisMaxFiles = 500,
@@ -116,10 +117,14 @@ vim.lsp.config("docker_compose_language_service", {
     root_markers = { "docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml" },
 })
 
+-- Dockerfile LSP with custom settings
 vim.lsp.config("dockerls", {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
+    cmd = { "docker-langserver", "--stdio" },
+    filetypes = { "dockerfile" },
+    root_dir = vim.fs.root(0, { "Dockerfile", ".git" }),
     settings = {
         docker = {
             languageserver = {
@@ -139,8 +144,6 @@ vim.lsp.config("dockerls", {
             },
         },
     },
-    filetypes = { "dockerfile" },
-    root_markers = { "Dockerfile" },
 })
 
 vim.lsp.config("gopls", {
@@ -159,8 +162,6 @@ vim.lsp.config("gopls", {
         },
     },
 })
-
-vim.lsp.enable("gopls")
 
 vim.lsp.config("html", {
     on_attach = on_attach,
@@ -278,6 +279,23 @@ vim.lsp.config("lua_ls", {
 --     },
 -- })
 
+vim.lsp.config("nginx_language_server", {
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    cmd = { "/home/eric/.local/bin/nginx-language-server" },
+    filetypes = { "nginx" },
+    root_markers = { "nginx.conf", ".git" },
+})
+
+-- SQLLS LSP
+vim.lsp.config("sqlls", {
+    on_attach = on_attach,
+    on_attach = on_init,
+    capabilities = capabilities,
+    filetypes = { "sql", "mysql" },
+})
+
 -- Terraform LSP (terraformls) custom setup
 vim.lsp.config("terraformls", {
     on_attach = on_attach,
@@ -287,8 +305,6 @@ vim.lsp.config("terraformls", {
     filetypes = { "terraform", "terraform-vars", "tf", "tfvars" },
     root_markers = { ".terraform", ".git" },
 })
-
-vim.lsp.enable("terraformls")
 
 -- Yaml LSP (Yamlls) custom setup
 vim.lsp.config("yamlls", {
@@ -307,14 +323,20 @@ vim.lsp.config("yamlls", {
             },
             hover = true,
             maxItemsComputed = 5000,
+            validate = true,
+
             schemaStore = {
                 enable = true,
                 url = "https://www.schemastore.org/api/json/catalog.json",
             },
+
             schemas = {
-                "https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json",
-                "https://www.schemastore.org/hugo.json",
-                "https://www.schemastore.org/hugo-theme.json",
+                ["https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"] = {
+                    "docker-compose.yml",
+                    "docker-compose.*.yml",
+                    "compose.yml",
+                    "compose.*.yml",
+                },
             },
         },
     },

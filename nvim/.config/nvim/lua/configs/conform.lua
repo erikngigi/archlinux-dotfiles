@@ -4,7 +4,7 @@ local options = {
         dockerfile = { "dockerfmt" },
         hcl = { "terraform_fmt" },
         html = { "prettierd" },
-        javascript = { "prettierd" },
+        -- javascript = { "prettierd" },
         lua = { "stylua" },
         make = { "mbake" },
         markdown = { "prettierd" },
@@ -16,6 +16,7 @@ local options = {
         tex = { "tex-fmt" },
         tf = { "terraform_fmt" },
         yaml = { "yamlfmt" },
+        zsh = { "shfmt" },
     },
     formatters = {
         black = {

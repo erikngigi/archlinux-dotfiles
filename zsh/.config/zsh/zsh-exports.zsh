@@ -14,14 +14,24 @@ export PATH="$HOME/.local/bin:$PATH"
 # NodeJS global packages
 export PATH="$HOME/.npm-global/bin:$PATH"
 # Go
+export GOENV="$HOME/.go/env"
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
-export PATH="$GOBIN:$PATH"
+export PATH="$GOENV:$GOBIN:$PATH"
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 # Custom scripts
 export PATH="$HOME/.scripts:$HOME/.scripts/terraform:$PATH"
-
+# Flutter
+export PATH="$HOME/.local/bin/flutter3.38.7/flutter/bin:$PATH"
+# Android SDK
+export ANDROID_HOME="$HOME/.local/bin/android-sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools/"
+export PATH="$PATH:$ANDROID_HOME/tools/bin/"
+export PATH="$PATH:$ANDROID_HOME/tools/"
+# Java Home
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+export PATH="$JAVA_HOME/bin:$PATH"
 # ------------------------
 # Pager & Man
 # ------------------------

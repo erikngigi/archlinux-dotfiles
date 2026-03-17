@@ -8,11 +8,11 @@ export GDK_BACKEND=x11
 # Start network applet in the background
 nm-applet &
 
-# Start picom compositor in the background
-# picom --config "$HOME/.config/picom/picom.conf" &
-
 # Restore wallpaper
 sh ~/.fehbg &
+
+# Thunderbird
+thunderbird &
 
 # Set the default cursor to 'left_ptr'
 xsetroot -cursor_name left_ptr &

@@ -26,10 +26,11 @@ plug "zap-zsh/exa"
 plug "zap-zsh/fzf"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "macunha1/zsh-terraform"
 
 # If tmux is executable, X is running, and not inside a tmux session, then try to attach. If attachment fails, start a new session
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
-	[ -z "${TMUX}" ] && { tmux || tmux; } >/dev/null 2>&1
+  [ -z "${TMUX}" ] && { tmux || tmux; } >/dev/null 2>&1
 fi
 
 zstyle ':completion:*' special-dirs false
@@ -48,15 +49,24 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Confirm ssh-agent is running
 if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -s)"
+  eval "$(ssh-agent -s)"
 fi
 
 # Load and initialise completion system
-autoload -Uz compinit; compinit
-autoload bashcompinit; bashcompinit
+autoload -Uz compinit
+compinit
+autoload bashcompinit
+bashcompinit
 
 # AWS CLI completion in zsh
 complete -C "/usr/local/bin/aws_completer" aws
 
 # Terraform CLI completion in zsh
 complete -o nospace -C "/usr/bin/terraform terraform"
+
+# Pipx CLI completion
+eval "$(register-python-argcomplete pipx)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion

@@ -26,11 +26,11 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 # pacman and yay
 alias Pacman='doas pacman'
 alias refresh='doas pacman -Syyy'
-alias pacsyu='doas pacman -Syu'                  # update only standard pkgs
-alias pacsyyu='doas pacman -Syyu'                # Refresh pkglist & update standard pkgs
-alias yaysua='yay -Sua --noconfirm'              # update only AUR pkgs (yay)
-alias unlock='doas rm /var/lib/pacman/db.lck'    # remove pacman lock
-alias cleanup='yay -Rns $(yay -Qtdq)'            # remove orphaned packages
+alias pacsyu='doas pacman -Syu'               # update only standard pkgs
+alias pacsyyu='doas pacman -Syyu'             # Refresh pkglist & update standard pkgs
+alias yaysua='yay -Sua --noconfirm'           # update only AUR pkgs (yay)
+alias unlock='doas rm /var/lib/pacman/db.lck' # remove pacman lock
+alias cleanup='yay -Rns $(yay -Qtdq)'         # remove orphaned packages
 alias checkupdates='checkupdates && yay -Qua'
 alias update-arch='yay -Syu --noconfirm'
 alias clear-cache='yay -Scc --noconfirm'
@@ -43,17 +43,17 @@ alias sudo='doas'
 
 # NvChad
 nvim_cd() {
-    local target_dir="${1:-.}"  # Default to current directory
-    
-    if [ ! -d "$target_dir" ]; then
-        echo "Error: Directory '$target_dir' not found"
-        return 1
-    fi
-    
-    local current_dir="$(pwd)"
-    cd "$target_dir" || return 1
-    nvim "$@"
-    cd "$current_dir"
+  local target_dir="${1:-.}" # Default to current directory
+
+  if [ ! -d "$target_dir" ]; then
+    echo "Error: Directory '$target_dir' not found"
+    return 1
+  fi
+
+  local current_dir="$(pwd)"
+  cd "$target_dir" || return 1
+  nvim "$@"
+  cd "$current_dir"
 }
 alias configrc='nvim_cd ~/.config/'
 alias nvimrc='nvim_cd ~/.config/nvim'
@@ -95,7 +95,7 @@ alias checkout='git checkout'
 alias clone='git clone'
 alias commit='git commit'
 alias fetch='git fetch'
-alias stat='git status'  # 'status' is protected name so using 'stat' instead
+alias stat='git status' # 'status' is protected name so using 'stat' instead
 alias tag='git tag'
 alias newtag='git tag -a'
 alias merge='git merge'
@@ -182,20 +182,18 @@ alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate ar
 alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
 
 # Roadsmart Windows RDP
-alias rdpadmin="xfreerdp /v:18.198.114.201 /u:EC2AMAZ-4M1P3P5\\rdpadmin /p:'WZ8qO9y6LJwXAq2qGPPov7aHG' /size:1920x1080 /cert:ignore /sec:nla"
+alias sr-win-rdpadmin="xfreerdp /v:18.198.114.201 /u:EC2AMAZ-4M1P3P5\\rdpadmin /p:'WZ8qO9y6LJwXAq2qGPPov7aHG' /size:1366x768 /cert:ignore /sec:nla"
+alias sr-win-administrator="xfreerdp /v:18.198.114.201 /u:Administrator /p:'3gYqwhiL5PTKhC6WMEgF6Fvo7' /size:1366x768 /cert:ignore /sec:nla"
 
 # Game mode
 alias game-mode-on="xrandr --output DP2 --off"
 alias game-mode-off="xrandr --output DP2 --mode 1920x1080 --left-of DP1"
 
 # Anime
-alias one-piece="mpv --aid=1 --sid=1 /storage/Tv-Shows/One\ Piece/"
-alias solo-leveling="mpv --aid=1 --sid=1 /storage/Tv-Shows/Solo\ Leveling"
+alias one-piece="mpv --aid=2 --sid=1 /storage/Tv-Shows/Anime/One\ Piece/"
+alias boku-no-hero="mpv --aid=1 --sid=1 /storage/Tv-Shows/Boku\ no\ Hero\ Academia"
+alias gurren-laggan="mpv --aid=1 --sid=2 /storage/Tv-Shows/Anime/Tengen\ Toppa\ Gurren\ Lagann"
 
 # Western Tv-Shows
-alias andor="mpv /storage/Tv-Shows/Andor"
-alias justice-league="mpv /storage/Tv-Shows/Justice\ League"
-alias person-of-interest="mpv /storage/Tv-Shows/Person\ of\ Interest"
-alias the-mentalist="mpv /storage/Tv-Shows/The\ Mentalist"
-alias manhunt-unabomber="mpv /storage/Tv-Shows/Manhunt\ Unabomber"
-alias fallout="mpv /storage/Tv-Shows/Fallout"
+alias the-pacific="mpv --sid=1 --sub-scale=0.8 --sub-pos=108 /storage/Tv-Shows/Western/The\ Pacific"
+alias 1883="mpv /storage/Tv-Shows/Western/1883"
