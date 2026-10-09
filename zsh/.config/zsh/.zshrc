@@ -27,6 +27,7 @@ plug "zsh-users/zsh-history-substring-search"
 plug "zap-zsh/fzf"
 plug "zsh-users/zsh-autosuggestions"
 plug "macunha1/zsh-terraform"
+plug "svenXY/timewarrior"
 plug "zsh-users/zsh-syntax-highlighting"
 
 # Custom configurations come after community plugins
@@ -51,6 +52,11 @@ bashcompinit
 # Completion styles after compinit
 zstyle ':completion:*' special-dirs false
 zstyle ':completion::complete:*' use-cache 1
+
+# Git Remote Branch Completion
+zstyle ':completion::complete:git-push:*' remote-branchs true
+zstyle ':completion:*:*:git-push:*' remotes self origin
+zstyle ':completion:*:*:git:*' option-stacking yes
 
 # Better SSH/Rsync/SCP Autocomplete
 zstyle ':completion:*:(ssh|scp|rsync):*' tag-order 'hosts:-host:host'

@@ -29,7 +29,6 @@ lspconfig.servers = {
 local default_servers = {
     "cssls",
     "jsonls",
-    "systemd_lsp",
     "texlab",
     "ts_ls",
 }
@@ -349,6 +348,19 @@ vim.lsp.config("lua_ls", {
 })
 vim.lsp.enable("lua_ls")
 
+-- Make LSP custom settings
+vim.lsp.config("make_ls", {
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    name = "make-ls",
+    cmd = { "make-ls" },
+    filetypes = { "make" },
+    root_markers = { "Makefile", "makefile", "GNUmakefile", ".git" },
+})
+vim.lsp.enable("make_ls")
+
+-- Marksman LSP custom settings
 vim.lsp.config("marksman", {
     on_attach = on_attach,
     on_init = on_init,
@@ -408,6 +420,15 @@ vim.lsp.config("taplo", {
 })
 vim.lsp.enable("taplo")
 
+-- Systemd LSP
+vim.lsp.config("systemd_lsp", {
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    filetypes = { "systemd" },
+})
+vim.lsp.enable("systemd_lsp")
+
 -- Yaml LSP (Yamlls) custom setup
 vim.lsp.config("yamlls", {
     on_attach = on_attach,
@@ -441,12 +462,8 @@ vim.lsp.config("yamlls", {
                 ["https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"] = {
                     "**/docker-compose.yml",
                     "**/docker-compose.yaml",
-                    "**/docker-compose.*.yml",
-                    "**/docker-compose.*.yaml",
                     "**/compose.yml",
                     "**/compose.yaml",
-                    "**/compose.*.yml",
-                    "**/compose.*.yaml",
                 },
 
                 ["https://www.schemastore.org/github-workflow.json"] = {
@@ -457,40 +474,6 @@ vim.lsp.config("yamlls", {
                     "**/.forgejo/workflows/*.yml",
                     "**/.forgejo/workflows/*.yaml",
                 },
-
-                -- Ansible Playbook Schema (Only matches playbooks)
-                -- ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] = {
-                --     "playbook.yml",
-                --     "playbook.yaml",
-                --     "site.yml",
-                --     "site.yaml",
-                --     "**/playbooks/*.yml",
-                --     "**/playbooks/*.yaml",
-                -- },
-                --
-                -- -- Ansible Tasks Schema (Only matches files inside tasks/ or handlers/)
-                -- ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] = {
-                --     "**/tasks/*.yml",
-                --     "**/tasks/*.yaml",
-                --     "**/handlers/*.yml",
-                --     "**/handlers/*.yaml",
-                -- },
-                --
-                -- -- Ansible Variables Schema (Only matches host/group/role vars)
-                -- ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/vars.json"] = {
-                --     "**/vars/*.yml",
-                --     "**/vars/*.yaml",
-                --     "**/host_vars/*.yml",
-                --     "**/host_vars/*.yaml",
-                --     "**/group_vars/*.yml",
-                --     "**/group_vars/*.yaml",
-                -- },
-                --
-                -- -- Ansible Inventory Schema (Only matches inventory files)
-                -- ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/inventory.json"] = {
-                --     "inventory.yml",
-                --     "inventory.yaml",
-                -- },
             },
         },
     },

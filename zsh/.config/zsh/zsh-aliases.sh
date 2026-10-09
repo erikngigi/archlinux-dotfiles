@@ -7,7 +7,7 @@ alias zsh-colors='for i in {1..256}; do print -P "%F{$i}Color : $i"; done;'
 alias tf='terraform'
 
 # get fastest mirrors
-alias mirror="doas reflector --country Kenya --latest 5 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirror="doas reflector --latest 5 --protocol https --age 12 --sort rate --save /etc/pacman.d/mirrorlist"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -182,29 +182,28 @@ alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
 alias game-mode-on="xrandr --output DP-2 --off"
 alias game-mode-off="xrandr --output DP-2 --mode 1920x1080 --left-of DP-1"
 gaming() {
-  local target_dir="${1:-.}" # Default to current directory
+  local target_dir="$1"
+  local game_executable="$2"
 
-  if [ ! -d "$target_dir" ]; then
+  if [[ ! -d "$target_dir" ]]; then
     echo "Error: Directory '$target_dir' not found"
     return 1
   fi
 
-  cd "$target_dir"
+  if [[ -z "$game_executable" ]]; then
+    echo "Error: No game executable specified."
+    return 1
+  fi
+
+  cd "$target_dir" && wine "$game_executable"
 }
-alias fear3='gaming ~/.wine/my-games/drive_c/Program\ Files\ \(x86\)/WB\ Games/F.E.A.R.\ 3'
+alias cod-mw='gaming ~/.wine/my-games/drive_c/Program\ Files\ \(x86\)/Call\ of\ Duty\ Modern\ Warfare'
 alias outland='gaming ~/.wine/my-games/drive_c/Program\ Files\ \(x86\)/Housemarque/Outland'
-alias nfs-mw='gaming ~/.wine/my-games/drive_c/Program\ Files\ \(x86\)/R.G.\ Mechanics/Need\ for\ Speed\ -\ Most\ Wanted/'
 
 # Anime
-alias legend-of-the-galatic-heroes="mpv --aid=1 --sid=1 /storage/Tv-Shows/Anime/Legend\ of\ the\ Galatic\ Heroes/"
-alias dr-stone="mpv /storage/Tv-Shows/Anime/Dr\ Stone"
+alias samurai-champloo='mpv --aid=2 --sid=1 /storage/Tv-Shows/Anime/Samurai\ Champloo'
 
 # Western Tv-Shows
-alias 1883="mpv /storage/Tv-Shows/Western/1883"
-alias house-of-the-dragon="mpv /storage/Tv-Shows/Western/House\ of\ the\ Dragon"
-alias my-adventures-with-superman="mpv /storage/Tv-Shows/Western/My\ Adventures\ With\ Superman"
 alias star-wars-maul="mpv /storage/Tv-Shows/Western/Star\ Wars\ Maul\ -\ Shadow\ Lord"
-alias the-wire="mpv /storage/Tv-Shows/Western/The\ Wire"
-alias wolverine-and-the-xmen="mpv /storage/Tv-Shows/Western/Wolverine\ and\ the\ X-Men"
-alias xmen-the-animated-series="mpv /storage/Tv-Shows/Western/X-Men\ The\ Animated\ Series"
+alias star-wars-the-clone-wars="mpv /storage/Tv-Shows/Western/Star\ Wars\ The\ Clone\ Wars"
 alias xmen-97="mpv /storage/Tv-Shows/Western/X-Men\ 97"

@@ -45,6 +45,30 @@ lint.linters.shellcheck.args = {
     "--enable=all",
 }
 
+lint.linters.systemdlint = {
+    name = "systemdlint",
+    cmd = "systemdlint",
+    stdin = false,
+    args = {
+        "--messageformat={path}:{line}:{severity}:{msg}",
+    },
+    stream = "stderr",
+    ignore_exitcode = true,
+    parser = require("lint.parser").from_errorformat("%f:%l:%t%*[^:]:%m", {
+        source = "systemdlint",
+        severity = {
+            e = vim.diagnostic.severity.ERROR,
+            w = vim.diagnostic.severity.WARN,
+            i = vim.diagnostic.severity.INFO,
+        },
+    }),
+}
+
+lint.linters.vale.args = {
+    "--config=" .. vim.fn.expand("~/.config/vale/.vale.ini"),
+    "--output=JSON",
+}
+
 lint.linters.yamllint.args = {
     unpack(lint.linters.yamllint.args),
     "-d",

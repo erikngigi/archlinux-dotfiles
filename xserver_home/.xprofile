@@ -1,5 +1,6 @@
 # Dual monitor displays
 "$HOME/.scripts/dual-monitor-setup.sh"
+# "$HOME/.scripts/google-tv-setup.sh"
 
 # Export session type
 export XDG_SESSION_TYPE=x11

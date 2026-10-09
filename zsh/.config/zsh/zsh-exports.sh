@@ -79,6 +79,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Password manager
 export PASSWORD_STORE_CLIP_TIME="120"
+export PASSWORD_STORE_GENERATED_LENGTH="26"
 
 # Infracost
 export INFRACOST_CURRENCY="USD"
@@ -92,4 +93,9 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Wine
+export WINEDEBUG=-all
 export WINEPREFIX="/home/eric/.wine/my-games"
+
+# Vale configuration using XDG environment variables
+export VALE_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/vale/.vale.ini"
+export VALE_STYLES_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/vale/styles"

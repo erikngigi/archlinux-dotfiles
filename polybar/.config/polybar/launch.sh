@@ -18,3 +18,7 @@ polybar eric-1 &
 if [[ $(xrandr -q | grep 'DP-2 connected') ]]; then
   polybar eric-2 &
 fi
+
+if [[ $(xrandr -q | grep 'HDMI-1 connected') ]]; then
+  polybar eric-3 &
+fi

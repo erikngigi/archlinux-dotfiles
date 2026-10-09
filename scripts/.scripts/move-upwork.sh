@@ -2,25 +2,25 @@
 
 # Define the desired positions for each window
 TIME_TRACKER_POSITION="80 100"
-CONTROL_PANEL_POSITION="440 100"
+CONTROL_PANEL_POSITION="500 100"
 MESSAGE_PANEL="560 100"
 SETTINGS_PANEL="560 100"
 ABOUT_PANEL="600 100"
 
 # Function to move a window by name
 move_window() {
-    local window_name=$1
-    local position=$2
+  local window_name=$1
+  local position=$2
 
-    # Search for the window using its name
-    WINDOW_ID=$(xdotool search --name "$window_name" | head -n 1)
-    if [ -n "$WINDOW_ID" ]; then
-        # Move the window to the specified position
-        xdotool windowmove "$WINDOW_ID" $position
-        echo "Moved '$window_name' to $position"
-    else
-        echo "Window '$window_name' not found."
-    fi
+  # Search for the window using its name
+  WINDOW_ID=$(xdotool search --name "$window_name" | head -n 1)
+  if [ -n "$WINDOW_ID" ]; then
+    # Move the window to the specified position
+    xdotool windowmove "$WINDOW_ID" $position
+    echo "Moved '$window_name' to $position"
+  else
+    echo "Window '$window_name' not found."
+  fi
 }
 
 # Wait for the applications to launch

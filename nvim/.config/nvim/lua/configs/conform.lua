@@ -18,7 +18,7 @@ local options = {
         sh = { "shfmt" },
         terraform = { "terraform_fmt" },
         ["terraform-vars"] = { "terraform_fmt" },
-        tex = { "tex-fmt", "latexindent" },
+        tex = { "tex-fmt" },
         toml = { "taplo" },
         tf = { "terraform_fmt" },
         ["yaml.ansible"] = { "prettier" },
@@ -54,13 +54,9 @@ local options = {
             },
         },
         ["tex-fmt"] = {
-            prepend_args = {
-                "--wraplen",
-                "150",
-                "--tabsize",
-                "4",
-            },
-            stdin = true,
+            -- Force conform to use your global config if needed
+            args = { "--config", vim.fn.expand("~/.config/tex-fmt/tex-fmt.toml"), "$FILENAME" },
+            stdin = false,
         },
         yamlfmt = {
             prepend_args = {
