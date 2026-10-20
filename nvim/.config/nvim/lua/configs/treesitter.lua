@@ -69,4 +69,6 @@ local options = {
 
 require("nvim-treesitter.configs").setup(options)
 
+vim.treesitter.language.register("yaml", "ansible")
+
 vim.treesitter.query.set("dockerfile", "injections", "")

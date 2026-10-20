@@ -35,3 +35,18 @@ require("autocmds")
 vim.schedule(function()
     require("mappings")
 end)
+
+local orig_convert = vim.lsp.util.convert_input_to_markdown_lines
+vim.lsp.util.convert_input_to_markdown_lines = function(input, contents)
+    local result = orig_convert(input, contents)
+    if result then
+        for i, line in ipairs(result) do
+            result[i] = line:gsub("<code>(.-)</code>", "`%1`")
+                :gsub("<b>(.-)</b>", "**%1**")
+                :gsub("<strong>(.-)</strong>", "**%1**")
+                :gsub("<br%s*/?>", "\n")
+                :gsub("<[^<>]+>", "") -- Strip any remaining stray tags
+        end
+    end
+    return result
+end

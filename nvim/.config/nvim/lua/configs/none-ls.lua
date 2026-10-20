@@ -18,9 +18,6 @@ local diagnostics = {
         end,
     }),
     null_ls.builtins.diagnostics.golangci_lint,
-    null_ls.builtins.diagnostics.ansiblelint.with({
-        filetypes = { "yaml.ansible" },
-    }),
 }
 
 local sources = {}

@@ -21,7 +21,7 @@ local options = {
         tex = { "tex-fmt" },
         toml = { "taplo" },
         tf = { "terraform_fmt" },
-        ["yaml.ansible"] = { "prettier" },
+        ansible = { "prettier" },
         yaml = { "yamlfmt" },
         zsh = { "shfmt" },
     },

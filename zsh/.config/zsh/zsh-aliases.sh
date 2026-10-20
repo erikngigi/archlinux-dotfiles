@@ -202,8 +202,12 @@ alias outland='gaming ~/.wine/my-games/drive_c/Program\ Files\ \(x86\)/Housemarq
 
 # Anime
 alias samurai-champloo='mpv --aid=2 --sid=1 /storage/Tv-Shows/Anime/Samurai\ Champloo'
+alias hells-paradise="mpv --aid=1 --sid=2 /storage/Tv-Shows/Anime/Hells\ Paradise"
 
 # Western Tv-Shows
 alias star-wars-maul="mpv /storage/Tv-Shows/Western/Star\ Wars\ Maul\ -\ Shadow\ Lord"
 alias star-wars-the-clone-wars="mpv /storage/Tv-Shows/Western/Star\ Wars\ The\ Clone\ Wars"
 alias xmen-97="mpv /storage/Tv-Shows/Western/X-Men\ 97"
+
+# Movies playlist
+alias weekend-playlist="mpv ~/.config/mpv/playlists/weekend-watchlist.m3u"

@@ -1,6 +1,7 @@
 local lint = require("lint")
 
 lint.linters_by_ft = {
+    ansible = { "ansible_lint" },
     dockerfile = { "hadolint" },
     html = { "htmlhint" },
     json = { "jsonlint" },
